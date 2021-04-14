@@ -1,5 +1,6 @@
 package uk.ac.tees.S6145076.HairSaloon.admin;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import java.util.List;
 
 import uk.ac.tees.S6145076.HairSaloon.SplashActivity;
 import uk.ac.tees.S6145076.HairSaloon.R;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
 import uk.mylibrary.AppDataBase;
 import uk.mylibrary.UserAppointment;
@@ -83,6 +85,20 @@ public class appointments_activity extends AppCompatActivity {
         adminRequestsAdapter=new appointmentAdapter(getApplicationContext(),getAppointmentList());//pass locationList with Context to Custom adapter
         recyclerView.setAdapter(adminRequestsAdapter);
 
+
+
+        //delete listener
+        adminRequestsAdapter.setonClick(new callbackUpdate() {
+            @Override
+            public void deleteListener(int id) {
+                cancelAppointment(id);
+              //  confirmCancel(getApplicationContext(),id);
+                  Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         //add new appointment by admin user event listener //
         addAppointments = findViewById(R.id.admin_fab);
         addAppointments.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +108,7 @@ public class appointments_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
         /* check appointment list is empty or not and then display data on the recycler
@@ -186,6 +203,39 @@ public class appointments_activity extends AppCompatActivity {
         }
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
+
+
+
+    private void cancelAppointment(int position) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to cancel appointment?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+
+                        //delete appointment //
+                        databasehandler1.deleteOne(position);
+                        displayAppointments();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+
+
+
+
+
+
+
 
 
     /* get all admin list details store in the database

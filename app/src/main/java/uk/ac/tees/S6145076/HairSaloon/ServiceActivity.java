@@ -55,7 +55,7 @@ public class ServiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service);
+        setContentView(R.layout.activity_service12);
         Toolbar toolbar = findViewById(R.id.service_page_toolbar);
         setSupportActionBar(toolbar);
 

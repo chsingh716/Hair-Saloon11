@@ -52,7 +52,7 @@ public class SignInActivity extends BaseActivity {
     }
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_sign_in;
+        return R.layout.activity_sign_in1;
     }
 
 }

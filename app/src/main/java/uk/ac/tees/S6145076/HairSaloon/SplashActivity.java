@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash111);
 
         signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {

@@ -116,11 +116,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void navigateToVerifyActivity() {
-        Intent intent = new Intent(getActivity(), VerifyActivity.class);
-        intent.putExtra(VERIFICATION_ID, mVerificationId);
-        intent.putExtra(USER_TYPE, userType);
-        startActivity(intent);
-        finish();
+        //Intent intent = new Intent(getActivity(), VerifyActivity.class);
+        //intent.putExtra(VERIFICATION_ID, mVerificationId);
+        //intent.putExtra(USER_TYPE, userType);
+        //startActivity(intent);
+        //finish();
     }
 
     protected abstract Context getActivity();

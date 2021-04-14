@@ -22,7 +22,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity"></activity>
-        <activity android:name="uk.ac.tees.S6145076.HairSaloon.VerifyActivity" />
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.BaseActivity" />
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.ServiceActivity" />
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.MapsActivity" />
