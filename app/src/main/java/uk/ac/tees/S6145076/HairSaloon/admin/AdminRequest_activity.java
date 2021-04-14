@@ -49,7 +49,12 @@ public class AdminRequest_activity extends AppCompatActivity {
     sqliteDatabaseHandler databasehandler1;
     private List<adminAppointment> appointList = new ArrayList<>();
 
-
+    //onStart method is call when we move when activity to other
+  protected void onStart(){
+      super.onStart();
+      displayAppointments();
+      //Toast.makeText(getApplicationContext(),"Start...",Toast.LENGTH_SHORT ).show();
+  }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,30 +97,38 @@ public class AdminRequest_activity extends AppCompatActivity {
         /* check appointment list is empty or not and then display data on the recycler
 
          */
-           appointList=getAppointmentList();
+        displayAppointments();
 
-           adminRequestsAdapter.RecyclerViewAdapter(appointList);
-            if (appointList != null && appointList.size() > 0) {
-                recyclerView.setVisibility(View.VISIBLE);
-                noData.setVisibility(View.GONE);
-                adminRequestsAdapter.RecyclerViewAdapter(appointList);  //pass array list to adapter
-                recyclerView.setAdapter(adminRequestsAdapter);
-            } else {  //if list is empty
-                recyclerView.setVisibility(View.GONE);
-                noData.setVisibility(View.VISIBLE);
-            }
-
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            swipeRefreshLayout.setRefreshing(false);
-        });
+//        swipeRefreshLayout.setOnRefreshListener(() -> {
+//            swipeRefreshLayout.setRefreshing(false);
+//        });
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (!isFetching) {
-                isFetching = true;
-                appointList=getAppointmentList();
-                isFetching = false;
+                swipeRefreshLayout.setRefreshing(true);
+                displayAppointments();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+    }
+
+    /* this method help to pass data to Recycler view to display
+    appointments
+     */
+    void displayAppointments(){
+        appointList=getAppointmentList();
+
+        adminRequestsAdapter.RecyclerViewAdapter(appointList);
+        if (appointList != null && appointList.size() > 0) {
+            recyclerView.setVisibility(View.VISIBLE);
+            noData.setVisibility(View.GONE);
+            adminRequestsAdapter.RecyclerViewAdapter(appointList);  //pass array list to adapter
+            recyclerView.setAdapter(adminRequestsAdapter);
+        } else {  //if list is empty
+            recyclerView.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -156,7 +169,7 @@ public class AdminRequest_activity extends AppCompatActivity {
         alert.show();
     }
 
-    private void updateRequestStatus(UserAppointment userAppointment, boolean accepted) {
+    private void RequestStatusUpdate(UserAppointment userAppointment, boolean accepted) {
         String status;
         if (accepted) {
             status = ACCEPTED_STATUS;

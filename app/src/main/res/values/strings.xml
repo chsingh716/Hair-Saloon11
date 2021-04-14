@@ -54,7 +54,8 @@
     <string name="reject">Reject</string>
     <string name="all_requests">Available requests</string>
     <string name="add">Add</string>
-    <string-array name="services_list">
+
+    <string-array name="services_list1">
         <item>Lashes</item>
         <item>Waxing</item>
         <item>Nails</item>

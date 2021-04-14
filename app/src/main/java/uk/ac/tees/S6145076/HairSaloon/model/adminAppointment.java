@@ -11,6 +11,13 @@ public class adminAppointment {
         return styleName;
     }
 
+    public adminAppointment(String styleName, String timeDate, String userName, String status) {
+        this.styleName = styleName;
+        this.timeDate = timeDate;
+        this.userName = userName;
+        Status = status;
+    }
+
     public adminAppointment(int id, String styleName, String timeDate, String userName, String status) {
         this.id = id;
         this.styleName = styleName;

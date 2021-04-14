@@ -23,34 +23,25 @@ import java.util.Calendar;
 
 import dmax.dialog.SpotsDialog;
 import uk.ac.tees.S6145076.HairSaloon.R;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
 import uk.mylibrary.AppDataBase;
 import uk.mylibrary.ServiceModel;
 
 public class adminAddServiceActivity extends AppCompatActivity {
 
-    public static final String LASHES = "Lashes";
-    public static final String WAXING = "Waxing";
-    public static final String NAILS = "Nails";
-    public static final String FACIALS = "Facials";
-    public static final String BROWS = "Brows";
-    public static final String PEDICURE = "Pedicure";
-    SpotsDialog waitingDialog;
 
-    public static final String SERVICE_TYPE = "service_type";
-    private static final String SERVICE_DB = "Services";
-    private int max;
-    private DatabaseReference databaseReference;
+    sqliteDatabaseHandler databasehandler1;  //sqlite
+    private AppCompatSpinner spinner1;
 
-    private String serviceName;
-    private TextView title;
+    private Button addButton;
     private RecyclerView recyclerView;
     private AdminServiceTimeAdapter adapter;
     private MaterialCalendarView calendarView;
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    private AppCompatSpinner spinner;
-    private Button addButton;
-    private ServiceModel serviceModel;
-    private AppDataBase appDataBase;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +50,15 @@ public class adminAddServiceActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.admin_add_toolbar);
         setSupportActionBar(toolbar);
 
-        appDataBase = AppDataBase.getInstance(adminAddServiceActivity.this);
+        //sqlite initilize
+        databasehandler1 = new sqliteDatabaseHandler(getApplicationContext());
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        title = toolbar.findViewById(R.id.service_page_title);
-        spinner = findViewById(R.id.service_spinner);
-        waitingDialog = new SpotsDialog(this, R.style.waiting_dialog);
 
-        serviceName = getIntent().getStringExtra(SERVICE_TYPE);
+        spinner1 = findViewById(R.id.service_spinner);
+
+//        serviceName = getIntent().getStringExtra(SERVICE_TYPE);
 
         recyclerView = findViewById(R.id.service_page_list);
         adapter = new AdminServiceTimeAdapter(this);
@@ -74,41 +66,17 @@ public class adminAddServiceActivity extends AppCompatActivity {
 
         calendarView = findViewById(R.id.service_page_calendarView);
 
+        //add button listener
         addButton = findViewById(R.id.admin_add_button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onAddClicked();
+                onAddItem();
             }
         });
 
         initCalendarView();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//        myRef.setValue("Hello, World!");
-//
-//        initDataBase();
-
     }
-
-//    private void initDataBase() {
-//        databaseReference = FirebaseDatabase.getInstance().getReference(SERVICE_DB);
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot != null) {
-//                    for (DataSnapshot data : dataSnapshot.getChildren()) {
-//                        max = Integer.parseInt(data.getKey());
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.d("TAG", "onCancelled: ");
-//            }
-//        });
-//    }
 
     private void initCalendarView() {
         Calendar calendar = Calendar.getInstance();
@@ -126,22 +94,21 @@ public class adminAddServiceActivity extends AppCompatActivity {
                 .commit();
     }
 
-    protected void onAddClicked() {
-        String service = spinner.getSelectedItem().toString();
+    protected void onAddItem() {
+        String styleName = spinner1.getSelectedItem().toString();
         CalendarDay calendarDay = calendarView.getSelectedDate();
         int day = calendarDay.getDay();
         int month = calendarDay.getMonth();
         int year = calendarDay.getYear();
 
-        String date = month + "-" + day + "-" + year;
+        String date = day + "-" + month + "-" + year;
         String time = adapter.getSelectedTime();
 
-        if (!service.isEmpty() && !time.isEmpty() && !date.isEmpty()) {
-
-            serviceModel = new ServiceModel(service, date, time);
-
-
-            appDataBase.getServiceDao().insertService(serviceModel);
+        if (!styleName.isEmpty() && !time.isEmpty() && !date.isEmpty()) {
+            //insert data to database
+            String date_time= date + "," + time;
+            adminAppointment add_item=new adminAppointment(styleName,"user1",date_time,"Accepted");
+            databasehandler1.insertContact(add_item);
             Toast.makeText(adminAddServiceActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
         }
 

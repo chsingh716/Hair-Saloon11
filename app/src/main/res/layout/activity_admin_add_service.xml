@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/rounded_spinner_gray"
             android:dropDownVerticalOffset="35dp"
-            android:entries="@array/services_list"
+            android:entries="@array/services_list1"
             android:prompt="@string/service_select"
             android:spinnerMode="dropdown" />
 
