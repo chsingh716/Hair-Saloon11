@@ -26,7 +26,7 @@ import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.mylibrary.AppDataBase;
 import uk.mylibrary.ServiceModel;
 
-public class AdminAddServiceActivity extends AppCompatActivity {
+public class adminAddServiceActivity extends AppCompatActivity {
 
     public static final String LASHES = "Lashes";
     public static final String WAXING = "Waxing";
@@ -59,7 +59,7 @@ public class AdminAddServiceActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.admin_add_toolbar);
         setSupportActionBar(toolbar);
 
-        appDataBase = AppDataBase.getInstance(AdminAddServiceActivity.this);
+        appDataBase = AppDataBase.getInstance(adminAddServiceActivity.this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         title = toolbar.findViewById(R.id.service_page_title);
@@ -142,7 +142,7 @@ public class AdminAddServiceActivity extends AppCompatActivity {
 
 
             appDataBase.getServiceDao().insertService(serviceModel);
-            Toast.makeText(AdminAddServiceActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(adminAddServiceActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
         }
 
     }

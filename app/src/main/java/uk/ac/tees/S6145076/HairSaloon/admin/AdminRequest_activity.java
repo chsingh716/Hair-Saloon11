@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -23,30 +24,40 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import uk.ac.tees.S6145076.HairSaloon.SplashActivity;
 import uk.ac.tees.S6145076.HairSaloon.R;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
 import uk.mylibrary.AppDataBase;
 import uk.mylibrary.UserAppointment;
+
+import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
 
 import static uk.mylibrary.UserAppointment.ACCEPTED_STATUS;
 import static uk.mylibrary.UserAppointment.REJECTED_STATUS;
 
-public class AdminRequestsActivity extends AppCompatActivity {
+public class AdminRequest_activity extends AppCompatActivity {
 
-    private AdminRequestsAdapter adminRequestsAdapter;
+    private adminAppointmentAdapter adminRequestsAdapter;
     private RecyclerView recyclerView;
-    private FloatingActionButton floatingActionButton;
+    private FloatingActionButton addAppointments;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean isFetching = false;
-    private List<UserAppointment> mRequests = new ArrayList<>();
     private TextView noData;
+
+
+    //////////////////////////////////////////
+    sqliteDatabaseHandler databasehandler1;
+    private List<adminAppointment> appointList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_requests);
+
+
+        databasehandler1 = new sqliteDatabaseHandler(getApplicationContext());
+
 
         Toolbar toolbar = findViewById(R.id.admin_toolbar);
         setSupportActionBar(toolbar);
@@ -59,27 +70,40 @@ public class AdminRequestsActivity extends AppCompatActivity {
                 confirmLogout();
             }
         });
+
+
         swipeRefreshLayout = findViewById(R.id.admin_swipe);
         recyclerView = findViewById(R.id.admin_recycler_view);
-        adminRequestsAdapter = new AdminRequestsAdapter(this, new AdminRequestsAdapter.OnRequestAction() {
-            @Override
-            public void requestAction(UserAppointment userAppointment, boolean accepted) {
-                updateRequestStatus(userAppointment, accepted);
-            }
-        });
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext())); //create linearLayout to display multi-items
+        adminRequestsAdapter=new adminAppointmentAdapter(getApplicationContext(),getAppointmentList());//pass locationList with Context to Custom adapter
         recyclerView.setAdapter(adminRequestsAdapter);
 
-        floatingActionButton = findViewById(R.id.admin_fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-
+        //add new appointment by admin user event listener //
+        addAppointments = findViewById(R.id.admin_fab);
+        addAppointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminRequestsActivity.this, AdminAddServiceActivity.class);
+                Intent intent = new Intent(AdminRequest_activity.this, adminAddServiceActivity.class);
                 startActivity(intent);
             }
         });
 
-        getDataFromDatabase();
+
+        /* check appointment list is empty or not and then display data on the recycler
+
+         */
+           appointList=getAppointmentList();
+
+           adminRequestsAdapter.RecyclerViewAdapter(appointList);
+            if (appointList != null && appointList.size() > 0) {
+                recyclerView.setVisibility(View.VISIBLE);
+                noData.setVisibility(View.GONE);
+                adminRequestsAdapter.RecyclerViewAdapter(appointList);  //pass array list to adapter
+                recyclerView.setAdapter(adminRequestsAdapter);
+            } else {  //if list is empty
+                recyclerView.setVisibility(View.GONE);
+                noData.setVisibility(View.VISIBLE);
+            }
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             swipeRefreshLayout.setRefreshing(false);
@@ -88,40 +112,19 @@ public class AdminRequestsActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (!isFetching) {
                 isFetching = true;
-                getDataFromDatabase();
+                appointList=getAppointmentList();
+                isFetching = false;
             }
         });
 
     }
 
-    private void getDataFromDatabase() {
-        mRequests.clear();
-      Toast.makeText(getApplicationContext(),"hkjhjkhjkhj",Toast.LENGTH_SHORT).show();
-        mRequests.add(new UserAppointment("Facials", "18 Dec 2020 , 15:00", "", "Accepted", "", "Anna"));
-      mRequests.add(new UserAppointment("Nails", "22 Dec 2020 , 13:00", "", "Rejected", "", "Sara"));
-      mRequests.add(new UserAppointment("Lashes", "16 Dec 2020 , 14:00", "", "Accepted", "", "Mariam"));
-      onSuccess(mRequests);
-
-      }
 
     private void onError(Throwable throwable) {
-Toast.makeText(getApplicationContext(),"err",Toast.LENGTH_SHORT).show();
+    Toast.makeText(getApplicationContext(),"err",Toast.LENGTH_SHORT).show();
     }
 
-    private void onSuccess(List<UserAppointment> userAppointments) {
-        swipeRefreshLayout.setRefreshing(false);
-        if (userAppointments != null && userAppointments.size() > 0) {
-            recyclerView.setVisibility(View.VISIBLE);
-            noData.setVisibility(View.GONE);
 
-            mRequests.addAll(userAppointments);
-            adminRequestsAdapter.updateRequests(mRequests);
-        } else {
-            recyclerView.setVisibility(View.GONE);
-            noData.setVisibility(View.VISIBLE);
-        }
-
-    }
 
     public void logout() {
         AuthUI.getInstance()
@@ -129,7 +132,7 @@ Toast.makeText(getApplicationContext(),"err",Toast.LENGTH_SHORT).show();
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     public void onComplete(@NonNull Task<Void> task) {
                         // user is now signed out
-                        startActivity(new Intent(AdminRequestsActivity.this, SplashActivity.class));
+                        startActivity(new Intent(AdminRequest_activity.this, SplashActivity.class));
                         finish();
                     }
                 });
@@ -169,6 +172,13 @@ Toast.makeText(getApplicationContext(),"err",Toast.LENGTH_SHORT).show();
             msg = "Request Rejected";
         }
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+
+    /* get all admin list details store in the database
+     */
+    private List<adminAppointment> getAppointmentList(){
+        return databasehandler1.viewAll();
     }
 
 }
