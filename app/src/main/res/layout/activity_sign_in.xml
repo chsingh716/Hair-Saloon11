@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="uk.ac.tees.S6145076.HairSaloon.SignInActivity">
+
+    <ImageView
+        android:id="@+id/sign_in_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+
+
+    <TextView
+        android:id="@+id/user_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/sign_in_layout"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:textStyle="normal" />
+
+    <LinearLayout
+        android:id="@+id/sign_in_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/edit_text_rounded"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_32sdp"
+            app:ccp_autoDetectLanguage="true"
+            app:ccp_defaultNameCode="GB"
+            app:ccp_textSize="@dimen/font_14" />
+
+        <EditText
+            android:id="@+id/sign_in_mobile"
+            style="@style/EditText_STYLE"
+            android:drawableStart="@drawable/ic_mobile"
+            android:drawableTint="@color/gray5"
+            android:hint="@string/mobile_number" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_in_layout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/sign_in"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14" />
+</RelativeLayout>

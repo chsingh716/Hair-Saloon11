@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "62877175906",
+    "project_id": "hair-saloon-56331",
+    "storage_bucket": "hair-saloon-56331.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62877175906:android:3b7132183c53e6a061813b",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.S0321466"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoNEEvYV72EdWmILB2N25O7hJziLfHuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62877175906:android:415b7c510a2e900861813b",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.S6137093.bomor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoNEEvYV72EdWmILB2N25O7hJziLfHuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "oauth_client": [
+        {
+          "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoNEEvYV72EdWmILB2N25O7hJziLfHuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

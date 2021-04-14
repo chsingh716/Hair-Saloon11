@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "uk.ac.tees.S6145076.HairSaloon"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        resConfigs "en" // And any other languages you support
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+
+    // Firebase Bom
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+
+    // material
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+
+    //swiperefreshlayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //Navigation
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+
+    // ViewModel && LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    //Google Map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    // cardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // DatePicker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
+    // Dialog
+    implementation 'com.github.d-max:spots-dialog:0.7@aar'
+
+    // ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
+
+    // SDP lib
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    // country picker
+    implementation 'com.hbb20:ccp:2.4.0'
+
+    // Firebase Auth
+    implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
+    implementation 'com.google.firebase:firebase-database'
+
+    // calendar view
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
+
+
+    // CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':mylibrary')
+  implementation 'com.google.firebase:firebase-auth:20.0.4'
+
+  def room_version = "2.2.6"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+}

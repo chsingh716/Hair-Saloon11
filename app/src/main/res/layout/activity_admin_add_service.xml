@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="uk.ac.tees.S6145076.HairSaloon.ServiceActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/admin_add_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/Moccasin"
+        android:elevation="@dimen/_1sdp"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/service_page_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_35sdp"
+            android:text="Add Service"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_18"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:id="@+id/service_spinner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@id/admin_add_toolbar"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_30sdp">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/service_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_spinner_gray"
+            android:dropDownVerticalOffset="35dp"
+            android:entries="@array/services_list"
+            android:prompt="@string/service_select"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@android:drawable/arrow_down_float" />
+    </RelativeLayout>
+
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/service_page_calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/service_spinner_layout"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:mcv_calendarMode="month"
+        app:mcv_monthLabels="@dimen/_10sdp"
+        app:mcv_selectionColor="@color/fuchsia"
+        app:mcv_showOtherDates="all"
+        app:mcv_tileHeight="@dimen/_25sdp"
+        app:mcv_tileSize="@dimen/_35sdp" />
+
+
+    <TextView
+        android:id="@+id/service_page_available"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/service_page_calendarView"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/available_appointments"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/service_page_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/service_page_available"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:padding="@dimen/_3sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:itemCount="3"
+        tools:listitem="@layout/home_bottom_row" />
+
+    <Button
+        android:id="@+id/admin_add_button"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/add"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14" />
+
+</RelativeLayout>

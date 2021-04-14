@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="uk.ac.tees.S6145076.HairSaloon.SplashActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_above="@id/sign_in_button"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_button"
+        android:text="@string/sign_in"
+        android:textSize="@dimen/font_14" />
+
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_in_button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/margin_30"
+        android:background="@drawable/rounded_button_gray"
+        android:text="@string/sign_up"
+        android:textSize="@dimen/font_14" />
+
+    <TextView
+        android:id="@+id/admin_login_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_up_button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/login_admin"
+        android:textColor="@color/blue" />
+
+</RelativeLayout>

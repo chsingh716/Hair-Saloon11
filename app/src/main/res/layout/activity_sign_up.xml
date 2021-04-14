@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_gravity="center_vertical|center_horizontal"
+    tools:context="uk.ac.tees.S6145076.HairSaloon.SignUpActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_profile_avatar"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/brows"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_profile_avatar"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
+
+        <EditText
+            android:id="@+id/edit_first_name"
+            android:inputType="textFilter|textNoSuggestions"
+            style="@style/EditText_STYLE"
+            android:drawableTint="@color/gray5"
+            android:drawableStart="@drawable/ic_mobile"
+            android:hint="@string/first_name" />
+
+        <EditText
+            android:id="@+id/edit_last_name"
+            android:inputType="textFilter|textNoSuggestions"
+            android:drawableStart="@drawable/ic_add"
+            style="@style/EditText_STYLE"
+            android:drawableTint="@color/gray5"
+            android:hint="@string/last_name" />
+
+        <TextView
+            android:id="@+id/edit_address"
+            style="@style/EditText_STYLE"
+            android:gravity="center_vertical"
+            android:inputType="textFilter|textNoSuggestions"
+            android:lines="2"
+            android:drawableTint="@color/gray5"
+            android:drawableStart="@drawable/ic_location"
+            android:hint="@string/address" />
+
+        <EditText
+            android:id="@+id/edit_email"
+            style="@style/EditText_STYLE"
+            android:inputType="textFilter|textNoSuggestions"
+            android:drawableStart="@drawable/ic_email"
+            android:drawableTint="@color/gray5"
+            android:hint="@string/email"
+             />
+
+        <TextView
+            android:id="@+id/edit_date_birth"
+            style="@style/EditText_STYLE"
+            android:drawableTint="@color/gray5"
+            android:gravity="center_vertical"
+            android:drawableStart="@drawable/ic_calendar"
+            android:hint="@string/date_of_birth" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp_profile_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/edit_text_rounded"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_32sdp"
+                app:ccp_autoDetectLanguage="true"
+                app:ccp_defaultNameCode="GB"
+                app:ccp_textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/edit_mobile"
+                style="@style/EditText_STYLE"
+                android:drawableTint="@color/gray5"
+                android:inputType="textFilter|textNoSuggestions"
+                android:drawableStart="@drawable/ic_mobile"
+                android:hint="@string/mobile_number" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/submit"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14" />
+</RelativeLayout>

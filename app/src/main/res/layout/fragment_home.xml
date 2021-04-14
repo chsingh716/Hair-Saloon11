@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/_10sdp"
+    tools:context="uk.ac.tees.S6145076.HairSaloon.ui.services.AllServicesFragment">
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home_page_title"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:textSize="@dimen/font_16"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/home_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_home"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/top_services"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_page_top_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_below="@id/home_title"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal"
+        android:padding="@dimen/_3sdp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:spanCount="1"
+        tools:listitem="@layout/home_top_row" />
+
+    <TextView
+        android:id="@+id/home_title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_page_top_list"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/our_services"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_page_bottom_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_title2"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:padding="@dimen/_3sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="6"
+        tools:listitem="@layout/home_bottom_row" />
+</RelativeLayout>

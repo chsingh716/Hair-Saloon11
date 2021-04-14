@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/map_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_black_light"
+        tools:context="uk.ac.tees.S6145076.HairSaloon.MapsActivity" />
+
+    <EditText
+        android:id="@+id/map_address_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_weight=".15"
+        android:background="@drawable/edit_text_rounded"
+        android:minHeight="@dimen/_40sdp"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_12" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/map_submit_button"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_map"
+        app:backgroundTint="@color/red"
+        app:elevation="6dp" />
+
+    <Button
+        android:id="@+id/map_submit_button"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/size_20"
+        android:background="@drawable/rounded_button_gray"
+        android:text="@string/submit"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14" />
+</RelativeLayout>

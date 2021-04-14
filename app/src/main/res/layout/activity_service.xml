@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="uk.ac.tees.S6145076.HairSaloon.ServiceActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/service_page_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/Moccasin"
+        android:elevation="@dimen/_1sdp"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/service_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_35sdp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Booking Appointment"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_18"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/service_page_calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:mcv_calendarMode="month"
+        app:mcv_monthLabels="@dimen/_10sdp"
+        app:mcv_selectionColor="@color/fuchsia"
+        app:mcv_showOtherDates="all"
+        app:mcv_tileHeight="@dimen/_30sdp"
+        app:mcv_tileSize="@dimen/_40sdp" />
+
+
+    <TextView
+        android:id="@+id/service_page_available"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/available_appointments"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/service_page_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:padding="@dimen/_3sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:itemCount="3"
+        tools:listitem="@layout/home_bottom_row" />
+
+</LinearLayout>
