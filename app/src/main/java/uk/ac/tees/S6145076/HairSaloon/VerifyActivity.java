@@ -31,7 +31,7 @@ import java.util.UUID;
 import dmax.dialog.SpotsDialog;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import uk.ac.tees.S6145076.HairSaloon.admin.AdminRequest_activity;
+import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
 import uk.mylibrary.AppDataBase;
 import uk.mylibrary.UserModel;
 
@@ -302,7 +302,7 @@ public class VerifyActivity extends AppCompatActivity {
 
     void navigateToAdminActivity() {
         waitingDialog.dismiss();
-        Intent intent = new Intent(VerifyActivity.this, AdminRequest_activity.class);
+        Intent intent = new Intent(VerifyActivity.this, appointments_activity.class);
         startActivity(intent);
         finish();
     }

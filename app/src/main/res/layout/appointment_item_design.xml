@@ -30,6 +30,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Charanjit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_14"
+                android:textStyle="normal" />
+            <TextView
                 android:id="@+id/service_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,15 +56,6 @@
                 android:textSize="@dimen/font_14"
                 android:textStyle="normal" />
 
-            <TextView
-                android:id="@+id/service_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="pending"
-                android:textColor="@color/green"
-                android:textSize="@dimen/font_14"
-                android:textStyle="normal" />
 
         </LinearLayout>
 

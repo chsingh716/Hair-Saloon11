@@ -35,9 +35,9 @@ import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
 import static uk.mylibrary.UserAppointment.ACCEPTED_STATUS;
 import static uk.mylibrary.UserAppointment.REJECTED_STATUS;
 
-public class AdminRequest_activity extends AppCompatActivity {
+public class appointments_activity extends AppCompatActivity {
 
-    private adminAppointmentAdapter adminRequestsAdapter;
+    private appointmentAdapter adminRequestsAdapter;
     private RecyclerView recyclerView;
     private FloatingActionButton addAppointments;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -80,7 +80,7 @@ public class AdminRequest_activity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.admin_swipe);
         recyclerView = findViewById(R.id.admin_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext())); //create linearLayout to display multi-items
-        adminRequestsAdapter=new adminAppointmentAdapter(getApplicationContext(),getAppointmentList());//pass locationList with Context to Custom adapter
+        adminRequestsAdapter=new appointmentAdapter(getApplicationContext(),getAppointmentList());//pass locationList with Context to Custom adapter
         recyclerView.setAdapter(adminRequestsAdapter);
 
         //add new appointment by admin user event listener //
@@ -88,7 +88,7 @@ public class AdminRequest_activity extends AppCompatActivity {
         addAppointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminRequest_activity.this, adminAddServiceActivity.class);
+                Intent intent = new Intent(appointments_activity.this, addAppointmentActivity.class);
                 startActivity(intent);
             }
         });
@@ -145,7 +145,7 @@ public class AdminRequest_activity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     public void onComplete(@NonNull Task<Void> task) {
                         // user is now signed out
-                        startActivity(new Intent(AdminRequest_activity.this, SplashActivity.class));
+                        startActivity(new Intent(appointments_activity.this, SplashActivity.class));
                         finish();
                     }
                 });

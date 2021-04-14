@@ -12,7 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/appointment_list_row" />
+        tools:listitem="@layout/appointment_item_design" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/Snow"
+        app:elevation="6dp" />
 
     <TextView
         android:id="@+id/text_gallery"

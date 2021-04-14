@@ -21,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="uk.ac.tees.S6145076.HairSaloon.admin.AdminRequest_activity"></activity>
+        <activity android:name="uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity"></activity>
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.VerifyActivity" />
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.BaseActivity" />
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.ServiceActivity" />
@@ -42,14 +42,16 @@
 
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.SignUpActivity" />
         <activity android:name="uk.ac.tees.S6145076.HairSaloon.SignInActivity" />
-        <activity android:name="uk.ac.tees.S6145076.HairSaloon.MainActivity" />
-        <activity android:name="uk.ac.tees.S6145076.HairSaloon.admin.adminAddServiceActivity" />
-        <activity android:name="uk.ac.tees.S6145076.HairSaloon.SplashActivity">
+        <activity android:name="uk.ac.tees.S6145076.HairSaloon.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="uk.ac.tees.S6145076.HairSaloon.admin.addAppointmentActivity" />
+        <activity android:name="uk.ac.tees.S6145076.HairSaloon.SplashActivity">
+
         </activity>
     </application>
 

@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.concurrent.TimeUnit;
 
 import dmax.dialog.SpotsDialog;
-import uk.ac.tees.S6145076.HairSaloon.admin.AdminRequest_activity;
+import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
 import uk.mylibrary.UserModel;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -110,7 +110,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     void navigateToAdminActivity() {
         waitingDialog.dismiss();
-        Intent intent = new Intent(getActivity(), AdminRequest_activity.class);
+        Intent intent = new Intent(getActivity(), appointments_activity.class);
         startActivity(intent);
         finish();
     }

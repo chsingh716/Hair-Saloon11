@@ -15,7 +15,7 @@ public class adminAppointment {
         this.styleName = styleName;
         this.timeDate = timeDate;
         this.userName = userName;
-        Status = status;
+        this.Status = status;
     }
 
     public adminAppointment(int id, String styleName, String timeDate, String userName, String status) {
@@ -23,7 +23,7 @@ public class adminAppointment {
         this.styleName = styleName;
         this.timeDate = timeDate;
         this.userName = userName;
-        Status = status;
+        this.Status = status;
     }
 
     public int getId() {

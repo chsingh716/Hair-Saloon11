@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,22 +12,17 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DatabaseReference;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import dmax.dialog.SpotsDialog;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
-import uk.mylibrary.AppDataBase;
-import uk.mylibrary.ServiceModel;
 
-public class adminAddServiceActivity extends AppCompatActivity {
+public class addAppointmentActivity extends AppCompatActivity {
 
 
     sqliteDatabaseHandler databasehandler1;  //sqlite
@@ -36,11 +30,8 @@ public class adminAddServiceActivity extends AppCompatActivity {
 
     private Button addButton;
     private RecyclerView recyclerView;
-    private AdminServiceTimeAdapter adapter;
+    private timeAdapter adapter;
     private MaterialCalendarView calendarView;
-
-
-
 
 
     @Override
@@ -61,7 +52,7 @@ public class adminAddServiceActivity extends AppCompatActivity {
 //        serviceName = getIntent().getStringExtra(SERVICE_TYPE);
 
         recyclerView = findViewById(R.id.service_page_list);
-        adapter = new AdminServiceTimeAdapter(this);
+        adapter = new timeAdapter(this);
         recyclerView.setAdapter(adapter);
 
         calendarView = findViewById(R.id.service_page_calendarView);
@@ -109,7 +100,7 @@ public class adminAddServiceActivity extends AppCompatActivity {
             String date_time= date + "," + time;
             adminAppointment add_item=new adminAppointment(styleName,"user1",date_time,"Accepted");
             databasehandler1.insertContact(add_item);
-            Toast.makeText(adminAddServiceActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(addAppointmentActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
         }
 
     }

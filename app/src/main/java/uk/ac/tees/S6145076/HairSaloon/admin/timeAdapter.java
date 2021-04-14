@@ -14,14 +14,14 @@ import java.util.List;
 
 import uk.ac.tees.S6145076.HairSaloon.R;
 
-public class AdminServiceTimeAdapter extends RecyclerView.Adapter<AdminServiceTimeAdapter.AppointmentViewHolder> {
+public class timeAdapter extends RecyclerView.Adapter<timeAdapter.AppointmentViewHolder> {
 
     final Context mContext;
 
     private List<String> availableTimes = new ArrayList<>();
     private String mSelectedTime = "";
 
-    public AdminServiceTimeAdapter(Context context) {
+    public timeAdapter(Context context) {
         this.mContext = context;
         availableTimes.add("10:00");
         availableTimes.add("11:00");
@@ -42,12 +42,12 @@ public class AdminServiceTimeAdapter extends RecyclerView.Adapter<AdminServiceTi
 
     @NonNull
     @Override
-    public AdminServiceTimeAdapter.AppointmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public timeAdapter.AppointmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new AppointmentViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.service_time_row, parent, false), mContext);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdminServiceTimeAdapter.AppointmentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull timeAdapter.AppointmentViewHolder holder, int position) {
         holder.textView.setText(availableTimes.get(position));
     }
 

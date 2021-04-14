@@ -12,15 +12,18 @@ import java.util.List;
 
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.ServiceActivity;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
 
-public class adminAppointmentAdapter extends RecyclerView.Adapter<appointmentsHolder> {
+
+public class appointmentAdapter extends RecyclerView.Adapter<appointmentsHolder> {
     public List<adminAppointment> appointmentsList;
 
     Context context;
+    callbackUpdate customCallback;
 
     //constructor of class get 2 parameters from parent class
-    public adminAppointmentAdapter(Context activity, List<adminAppointment> list) {
+    public appointmentAdapter(Context activity, List<adminAppointment> list) {
         this.context = activity;
         this.appointmentsList = list; //location list Array
 
@@ -30,16 +33,21 @@ public class adminAppointmentAdapter extends RecyclerView.Adapter<appointmentsHo
     /*   method to update location list array
     ex: when item is insert or delete from location list
      */
-    public void RecyclerViewAdapter(List<adminAppointment> locationList) {
-        this.appointmentsList = locationList;
+    public void RecyclerViewAdapter(List<adminAppointment> appointmentsList) {
+        this.appointmentsList = appointmentsList;
 
     }
+/* setOnClick
 
+ */
+    public void setonClick(callbackUpdate callback){
+        customCallback= callback;
+    }
 
     @NonNull
     @Override
     public appointmentsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_request_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.appointment_item_design, parent, false);
         return new appointmentsHolder(view);
     }
 
@@ -57,12 +65,13 @@ public class adminAppointmentAdapter extends RecyclerView.Adapter<appointmentsHo
        // Picasso.with(this.context).load(location.getIconUrl()).resize(70, 70).into(holder.icon);
 
         //delete button event listener (this is also a part of view component)
-//        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getdeleteClickListener.onItemClick(location);  //activate onItemClick  event
-//            }
-//        });
+        holder.cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customCallback.deleteListener(appoint.getId());
+              //  getdeleteClickListener.onItemClick(appoint.getId());  //activate onItemClick  event
+            }
+        });
 
     }
 
