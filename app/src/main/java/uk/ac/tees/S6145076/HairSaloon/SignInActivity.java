@@ -45,7 +45,7 @@ public class SignInActivity extends BaseActivity {
                 }
 
                 mobileNumber = countryCodePicker.getSelectedCountryCodeWithPlus() + mobileNumber;
-                startPhoneNumberVerification(mobileNumber);
+               // startPhoneNumberVerification(mobileNumber);
 
             }
         });

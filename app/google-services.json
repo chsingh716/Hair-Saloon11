@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:62877175906:android:415b7c510a2e900861813b",
         "android_client_info": {
-          "package_name": "uk.ac.tees.S6145076.HairSaloon"
+          "package_name": "uk.ac.tees.S6137093.bomor"
         }
       },
       "oauth_client": [
@@ -64,6 +64,12 @@
       }
     },
     {
+      "client_info": {
+        "mobilesdk_app_id": "1:62877175906:android:20379c3cb7a18c4261813b",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.S6145076.HairSaloon"
+        }
+      },
       "oauth_client": [
         {
           "client_id": "62877175906-vmr9iq5rv1qmd128lpvr9ddmbld2d2h4.apps.googleusercontent.com",

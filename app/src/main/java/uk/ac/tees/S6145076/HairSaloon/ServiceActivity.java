@@ -30,12 +30,13 @@ import static uk.mylibrary.UserAppointment.PENDING_STATUS;
 
 public class ServiceActivity extends AppCompatActivity {
 
-    public static final String LASHES = "Lashes";
-    public static final String WAXING = "Waxing";
+    public static final String HAIR = "Hair";
+    public static final String SHAVES = "Shaves";
     public static final String NAILS = "Nails";
+    public static final String WAXING = "Waxing";
     public static final String FACIALS = "Facials";
-    public static final String BROWS = "Brows";
-    public static final String PEDICURE = "Pedicure";
+    public static final String HAIR_REMOVAl = "Hair_removal";
+    public static final String SHOE_SHINE = "Shoe_shine";
 
     public static final String SERVICE_TYPE = "service_type";
 
@@ -49,7 +50,7 @@ public class ServiceActivity extends AppCompatActivity {
     private String timeSelected;
     private String userId;
     private String userName;
-    MySharedPref mySharedPref;
+    MySharedPref22 mySharedPref22;
 
 
     @Override
@@ -60,9 +61,9 @@ public class ServiceActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        mySharedPref = MySharedPref.getInstance(ServiceActivity.this);
-        userId = mySharedPref.getUserId();
-        userName = mySharedPref.getName();
+        mySharedPref22 = MySharedPref22.getInstance(ServiceActivity.this);
+        userId = mySharedPref22.getUserId();
+        userName = mySharedPref22.getName();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         title = toolbar.findViewById(R.id.service_title);

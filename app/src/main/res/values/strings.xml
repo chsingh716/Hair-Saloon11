@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hair Saloon</string>
+    <string name="app_name">Hair Salon</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -36,8 +36,8 @@
     <string name="contact_us_title">A member of staff will be in touch with you as soon as possible</string>
     <string name="name">Name</string>
     <string name="your_message">Your message</string>
-    <string name="email_address">Email: <u>Enquires@bomorcosmetics.com</u></string>
-    <string name="mobile">Telephone: <u> +44 7586867895</u></string>
+    <string name="email_address">Email: <u>Enquires@hairsalon.com</u></string>
+    <string name="mobile">Telephone: <u> +44 0000000000</u></string>
     <string name="home_page_title">We combine artistic interpretation, knowledge, and skill with classic, elegant, and modern looks to create the perfect look for you. Whether you’re coming for makeup, wax, lashes or other services. BOMOR Cosmetics offer the best beauty services in town. We are based in Newcastle.</string>
     <string name="top_services">Top Services</string>
     <string name="our_services">Our Services</string>
@@ -50,17 +50,16 @@
     <string name="error_complete_verification_code">Please complete the OTP code!</string>
     <string name="update_profile">Update Profile</string>
     <string name="service_select">Choose a service</string>
-    <string name="approve">Accept</string>
-    <string name="reject">Reject</string>
     <string name="all_requests">Available requests</string>
     <string name="add">Add</string>
 
     <string-array name="services_list1">
-        <item>Lashes</item>
-        <item>Waxing</item>
+        <item>Hair</item>
+        <item>Shaves</item>
         <item>Nails</item>
+        <item>Waxing</item>
         <item>Facials</item>
-        <item>Brows</item>
-        <item>Pedicure</item>
+        <item>hair_removal</item>
+        <item>Shoe_shine</item>
     </string-array>
 </resources>

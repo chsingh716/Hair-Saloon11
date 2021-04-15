@@ -3,9 +3,19 @@ package uk.ac.tees.S6145076.HairSaloon;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class MySharedPref {
+import androidx.appcompat.app.AppCompatActivity;
 
-    private static final String MY_PREF_NAME = "bomor";
+public class MySharedPref22  {
+
+    public static final String HAIR = "Hair";
+    public static final String SHAVES = "Shaves";
+    public static final String NAILS = "Nails";
+    public static final String WAXING = "Waxing";
+    public static final String FACIALS = "Facials";
+    public static final String HAIR_REMOVAl = "Hair_removal";
+    public static final String SHOE_SHINE = "Shoe_shine";
+
+    private static final String MY_PREF_NAME = "Hair Saloon";
 
     private static final String USER_NAME = "user_name";
     public static final String IMAGE = "image";
@@ -13,28 +23,24 @@ public class MySharedPref {
     private static final String IS_LOGIN = "is_login";
     private static final String USER_RATING = "user_rating";
 
-    private static MySharedPref mySharedPref;
+    private static MySharedPref22 mySharedPref22;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 //    private Gson gson;
 
-    private MySharedPref(Context context) {
+    protected MySharedPref22(Context context) {
         sharedPreferences = context.getSharedPreferences(MY_PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-//        type = new TypeToken<List<RatingModel>>() {
-//        }.getType();
-//
-//        gson = new Gson();
 
     }
 
 
-    public static synchronized MySharedPref getInstance(Context context) {
-        if (mySharedPref == null)
-            mySharedPref = new MySharedPref(context);
+    public static synchronized MySharedPref22 getInstance(Context context) {
+        if (mySharedPref22 == null)
+            mySharedPref22 = new MySharedPref22(context);
 
-        return mySharedPref;
+        return mySharedPref22;
     }
 
 

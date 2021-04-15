@@ -38,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(SplashActivity.this, signUpActivity.class);
                 startActivity(intent);
                 finish();
             }

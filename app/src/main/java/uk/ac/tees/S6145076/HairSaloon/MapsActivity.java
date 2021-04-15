@@ -35,8 +35,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import static uk.ac.tees.S6145076.HairSaloon.SignUpActivity.MAP_REQUEST_CODE;
-import static uk.ac.tees.S6145076.HairSaloon.SignUpActivity.USER_ADDRESS;
+import static uk.ac.tees.S6145076.HairSaloon.signUpActivity.MAP_REQUEST_CODE;
+import static uk.ac.tees.S6145076.HairSaloon.signUpActivity.USER_ADDRESS;
 
 public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
     private FusedLocationProviderClient mFusedLocationProviderClient;
@@ -85,7 +85,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
                 if (location.isEmpty()) {
                     Toast.makeText(MapsActivity.this, getString(R.string.select_location), Toast.LENGTH_LONG).show();
                 } else {
-                    Intent intent = new Intent(MapsActivity.this, SignUpActivity.class);
+                    Intent intent = new Intent(MapsActivity.this, signUpActivity.class);
                     intent.putExtra(USER_ADDRESS, location);
                     setResult(MAP_REQUEST_CODE, intent);
                     finish();

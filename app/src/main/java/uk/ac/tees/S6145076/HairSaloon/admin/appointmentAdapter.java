@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.ServiceActivity;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
@@ -85,23 +86,26 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentsHolder>
     private int getStyleImage(String styleName) {
         int res = 0;
         switch (styleName) {
-            case ServiceActivity.BROWS:
-                res = R.drawable.brows;
+            case ServiceActivity.HAIR:
+                res = R.drawable.;
                 break;
-            case ServiceActivity.NAILS:
-                res = R.drawable.nails;
+            case ServiceActivity.SHAVES:
+                res = R.drawable.Shaves;
                 break;
             case ServiceActivity.FACIALS:
-                res = R.drawable.facials;
+                res = R.drawable.Facials;
                 break;
-            case ServiceActivity.PEDICURE:
-                res = R.drawable.pedicure;
+            case ServiceActivity.HAIR_REMOVAl:
+                res = R.drawable.Hair_removal;
                 break;
             case ServiceActivity.WAXING:
-                res = R.drawable.waxing;
+                res = R.drawable.Waxing;
                 break;
-            case ServiceActivity.LASHES:
-                res = R.drawable.lashes;
+            case ServiceActivity.NAILS:
+                res = R.drawable.Nails;
+                break;
+            case ServiceActivity.SHOE_SHINE:
+                res = R.drawable.Shoe_shine;
                 break;
         }
         return res;

@@ -18,6 +18,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.Calendar;
 
+import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
@@ -98,7 +99,7 @@ public class addAppointmentActivity extends AppCompatActivity {
         if (!styleName.isEmpty() && !time.isEmpty() && !date.isEmpty()) {
             //insert data to database
             String date_time= date + "," + time;
-            adminAppointment add_item=new adminAppointment(styleName,"user1",date_time,"Accepted");
+            adminAppointment add_item=new adminAppointment(styleName,"singh12",date_time,"Accepted");
             databasehandler1.insertContact(add_item);
             Toast.makeText(addAppointmentActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
         }

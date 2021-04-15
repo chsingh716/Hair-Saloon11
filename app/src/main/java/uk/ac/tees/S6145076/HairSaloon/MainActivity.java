@@ -29,6 +29,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 
@@ -38,14 +39,15 @@ import io.reactivex.schedulers.Schedulers;
 import uk.mylibrary.AppDataBase;
 import uk.mylibrary.UserModel;
 
-import static uk.ac.tees.S6145076.HairSaloon.MySharedPref.IMAGE;
+import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    MySharedPref mySharedPref;
+    MySharedPref22 mySharedPref22;
     private UserModel userModel;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +58,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        mySharedPref = MySharedPref.getInstance(MainActivity.this);
 
-        String userID = mySharedPref.getUserId();
+        fAuth=FirebaseAuth.getInstance();
+        mySharedPref22 = MySharedPref22.getInstance(MainActivity.this);
+
+        String userID = mySharedPref22.getUserId();
 
         AppDataBase.getInstance(this).getUserDao().getUserById(userID)
                 .subscribeOn(Schedulers.io())
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             tvName.setText(userModel.getFirstName() + " " + userModel.getLastName());
         }
         ImageView imageView = hView.findViewById(R.id.nav_user_image);
-        String imagePath = mySharedPref.getValue(IMAGE);
+        String imagePath = mySharedPref22.getValue(IMAGE);
         if (imagePath != null && !imagePath.isEmpty()) {
             imageView.setImageURI(Uri.fromFile(new File(imagePath)));
         }
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         hView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
+                startActivity(new Intent(MainActivity.this, signUpActivity.class));
                 drawer.closeDrawer(Gravity.START);
             }
         });
@@ -169,14 +173,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logout() {
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // user is now signed out
-                        startActivity(new Intent(MainActivity.this, SplashActivity.class));
+
+        fAuth.signOut();
+//        AuthUI.getInstance()
+//                .signOut(this)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        // user is now signed out
+//
+                        startActivity(new Intent(MainActivity.this, signUpActivity.class));
                         finish();
-                    }
-                });
+//                    }
+//                });
     }
 }
