@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static uk.ac.tees.S6145076.HairSaloon.BaseActivity.USER_TYPE;
+//import static uk.ac.tees.S6145076.HairSaloon.BaseActivity.USER_TYPE;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -27,10 +27,10 @@ public class SplashActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
-                intent.putExtra(USER_TYPE, BaseActivity.USER);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+//                intent.putExtra(USER_TYPE, BaseActivity.USER);
+//                startActivity(intent);
+//                finish();
             }
         });
 
@@ -48,10 +48,10 @@ public class SplashActivity extends AppCompatActivity {
         adminTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
-                intent.putExtra(USER_TYPE, BaseActivity.ADMIN);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+//                intent.putExtra(USER_TYPE, BaseActivity.ADMIN);
+//                startActivity(intent);
+//                finish();
             }
         });
     }

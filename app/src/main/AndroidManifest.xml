@@ -31,8 +31,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".admin.appointments_activity" />
-        <activity android:name=".BaseActivity" />
-        <activity android:name=".ServiceActivity" />
         <activity android:name=".MapsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

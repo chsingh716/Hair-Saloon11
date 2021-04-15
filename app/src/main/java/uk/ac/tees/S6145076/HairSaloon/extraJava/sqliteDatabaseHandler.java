@@ -82,8 +82,8 @@ public class sqliteDatabaseHandler extends SQLiteOpenHelper {
             do{
                 int id= cursor.getInt(0);
                 String serviceName= cursor.getString(1);
-                String date= cursor.getString(3);
                 String username= cursor.getString(2);
+                String date= cursor.getString(3);
                 String status= cursor.getString(4);
                 adminAppointment adminAppointment= new adminAppointment(id,serviceName,date,username,status);
                 returnList.add(adminAppointment);

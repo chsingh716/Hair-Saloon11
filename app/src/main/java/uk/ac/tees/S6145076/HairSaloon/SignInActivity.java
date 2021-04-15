@@ -2,6 +2,7 @@ package uk.ac.tees.S6145076.HairSaloon;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
@@ -28,8 +29,9 @@ public class SignInActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_in1);
 
         loginEmail = findViewById(R.id.sign_in_et_email);
         loginPassword = findViewById(R.id.sign_in_et_password);

@@ -64,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         String userID = mySharedPref22.getUserId();
 
-        AppDataBase.getInstance(this).getUserDao().getUserById(userID)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onSuccess, this::onError);
+//        AppDataBase.getInstance(this).getUserDao().getUserById(userID)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(this::onSuccess, this::onError);
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -175,15 +175,7 @@ public class MainActivity extends AppCompatActivity {
     public void logout() {
 
         fAuth.signOut();
-//        AuthUI.getInstance()
-//                .signOut(this)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        // user is now signed out
-//
-                        startActivity(new Intent(MainActivity.this, signUpActivity.class));
-                        finish();
-//                    }
-//                });
+        startActivity(new Intent(MainActivity.this, signUpActivity.class));
+        finish();
     }
 }

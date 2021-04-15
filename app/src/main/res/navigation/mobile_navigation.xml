@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_all_services">
+    app:startDestination="@+id/nav_appointments">
 
-    <fragment
-        android:id="@+id/nav_all_services"
-        android:name="uk.ac.tees.S6145076.HairSaloon.ui.services.AllServicesFragment"
-        android:label="@string/menu_all_services"
-        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_appointments"
