@@ -87,25 +87,25 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentsHolder>
         int res = 0;
         switch (styleName) {
             case ServiceActivity.HAIR:
-                res = R.drawable.;
+                res = R.drawable.hair;
                 break;
             case ServiceActivity.SHAVES:
-                res = R.drawable.Shaves;
+                res = R.drawable.shaves;
                 break;
             case ServiceActivity.FACIALS:
-                res = R.drawable.Facials;
+                res = R.drawable.facial;
                 break;
             case ServiceActivity.HAIR_REMOVAl:
-                res = R.drawable.Hair_removal;
+                res = R.drawable.hair_removal;
                 break;
             case ServiceActivity.WAXING:
-                res = R.drawable.Waxing;
+                res = R.drawable.waxing;
                 break;
             case ServiceActivity.NAILS:
-                res = R.drawable.Nails;
+                res = R.drawable.nails;
                 break;
-            case ServiceActivity.SHOE_SHINE:
-                res = R.drawable.Shoe_shine;
+            case ServiceActivity.HOT_TOWEL:
+                res = R.drawable.hot_towel;
                 break;
         }
         return res;

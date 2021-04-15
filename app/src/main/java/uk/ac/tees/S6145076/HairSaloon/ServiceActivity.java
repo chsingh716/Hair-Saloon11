@@ -30,13 +30,13 @@ import static uk.mylibrary.UserAppointment.PENDING_STATUS;
 
 public class ServiceActivity extends AppCompatActivity {
 
-    public static final String HAIR = "Hair";
-    public static final String SHAVES = "Shaves";
-    public static final String NAILS = "Nails";
-    public static final String WAXING = "Waxing";
-    public static final String FACIALS = "Facials";
-    public static final String HAIR_REMOVAl = "Hair_removal";
-    public static final String SHOE_SHINE = "Shoe_shine";
+    public static final String HAIR = "hair";
+    public static final String SHAVES = "shaves";
+    public static final String NAILS = "nails";
+    public static final String WAXING = "waxing";
+    public static final String FACIALS = "facials";
+    public static final String HAIR_REMOVAl = "hair_removal";
+    public static final String HOT_TOWEL = "hot_towel";
 
     public static final String SERVICE_TYPE = "service_type";
 

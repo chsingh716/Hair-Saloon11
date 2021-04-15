@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/sign_in_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/_40sdp"
@@ -34,27 +34,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/ccp_sign_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/edit_text_rounded"
-            android:gravity="center_vertical"
-            android:minHeight="@dimen/_32sdp"
-            app:ccp_autoDetectLanguage="true"
-            app:ccp_defaultNameCode="GB"
-            app:ccp_textSize="@dimen/font_14" />
 
         <EditText
-            android:id="@+id/sign_in_mobile"
+            android:id="@+id/sign_in_et_email"
             style="@style/EditText_STYLE"
-            android:drawableStart="@drawable/ic_mobile"
+            android:drawableStart="@drawable/ic_email"
             android:drawableTint="@color/gray5"
-            android:hint="@string/mobile_number" />
+            android:inputType="textEmailAddress"
+            android:hint="Email" />
+
+        <EditText
+            android:id="@+id/sign_in_et_password"
+            style="@style/EditText_STYLE"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/password"
+            android:drawableTint="@color/gray5"
+            android:hint="Password" />
     </LinearLayout>
 
     <Button
