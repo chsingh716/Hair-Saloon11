@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.control_hub;
 
 //import static uk.ac.tees.S6145076.HairSaloon.BaseActivity.USER_TYPE;
 
@@ -43,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
         if (fAuth.getCurrentUser() != null) {
             //Toast.makeText(getApplicationContext(),fAuth.getCurrentUser().toString(),Toast.LENGTH_LONG).show();
             //startActivity(new Intent(signUpActivity.this, MainActivity.class));
-            new readFirebaseData(SplashActivity.this).read("user");
+            new control_hub(SplashActivity.this).read("user");
             //finish();
         }
 

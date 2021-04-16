@@ -1,9 +1,6 @@
 package uk.ac.tees.S6145076.HairSaloon;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -21,10 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.hbb20.CountryCodePicker;
 
-import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
-import uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.control_hub;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -36,7 +30,7 @@ public class SignInActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
-    uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData readFirebaseData;
+    control_hub control_hub;
 
 
     @Override
@@ -65,7 +59,7 @@ public class SignInActivity extends AppCompatActivity {
         userTypeBtn= getIntent().getStringExtra("userType");  //get data from parent activity
         typeTextView.setText(userTypeBtn);
 
-        readFirebaseData = new readFirebaseData(this);
+        control_hub = new control_hub(this);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +90,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-                     readFirebaseData.read(userTypeBtn);
+                     control_hub.read(userTypeBtn);
 
                     //reset edit text fields..
                       loginEmail.setText("");

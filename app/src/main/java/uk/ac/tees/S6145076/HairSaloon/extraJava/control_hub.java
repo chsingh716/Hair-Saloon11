@@ -24,13 +24,13 @@ import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
 
-public class readFirebaseData extends AppCompatActivity {
+public class control_hub extends AppCompatActivity {
     public Context context;
     MySharedPref22 mySharedPref22;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
 
-    public readFirebaseData(Context context) {
+    public control_hub(Context context) {
         this.context = context;
         mySharedPref22= MySharedPref22.getInstance(context);
         fStore = FirebaseFirestore.getInstance();

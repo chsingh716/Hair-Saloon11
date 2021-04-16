@@ -1,7 +1,6 @@
 package uk.ac.tees.S6145076.HairSaloon;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,7 +39,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
-import uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.control_hub;
 
 
 import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
@@ -74,7 +73,7 @@ public class signUpActivity extends AppCompatActivity implements DatePickerDialo
 
    FirebaseFirestore fStore; // store firebase data
     String userId;
-  readFirebaseData firebaseRead;
+  control_hub firebaseRead;
 
 
 @Override
@@ -86,7 +85,7 @@ protected void onCreate(Bundle savedInstanceState) {
     fAuth = FirebaseAuth.getInstance();
     fStore = FirebaseFirestore.getInstance();
 
-    firebaseRead = new readFirebaseData(this);
+    firebaseRead = new control_hub(this);
 
     avatarImageView11 = findViewById(R.id.img_profile_avatar);
     firstNameEditText = findViewById(R.id.edit_firstname);
