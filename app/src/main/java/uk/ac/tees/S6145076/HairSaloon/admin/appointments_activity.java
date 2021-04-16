@@ -78,9 +78,12 @@ public class appointments_activity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.admin_swipe);
         recyclerView = findViewById(R.id.admin_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext())); //create linearLayout to display multi-items
-        adminRequestsAdapter=new appointmentAdapter(getApplicationContext(),getAppointmentList());//pass locationList with Context to Custom adapter
-        recyclerView.setAdapter(adminRequestsAdapter);
+        adminRequestsAdapter=new appointmentAdapter(getApplicationContext(),null);//pass locationList with Context to Custom adapter
+        //recyclerView.setAdapter(adminRequestsAdapter);
+        /* check appointment list is empty or not and then display data on the recycler
 
+         */
+        displayAppointments();
 
 
         //delete listener
@@ -90,6 +93,11 @@ public class appointments_activity extends AppCompatActivity {
                 cancelAppointment(id);
               //  confirmCancel(getApplicationContext(),id);
                   Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSuccessStore(boolean state) {
+
             }
         });
 
@@ -105,12 +113,6 @@ public class appointments_activity extends AppCompatActivity {
             }
         });
 
-
-
-        /* check appointment list is empty or not and then display data on the recycler
-
-         */
-        displayAppointments();
 
 //        swipeRefreshLayout.setOnRefreshListener(() -> {
 //            swipeRefreshLayout.setRefreshing(false);

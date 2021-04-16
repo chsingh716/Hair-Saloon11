@@ -28,7 +28,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText loginEmail, loginPassword;
     private Button signInButton;
     private TextView typeTextView;
-    private String userType;
+    private String userTypeBtn;
     //firebase
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -48,12 +48,12 @@ public class SignInActivity extends AppCompatActivity {
 
         //initialize firebase database
         fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        //fStore = FirebaseFirestore.getInstance();
 
-        userType= getIntent().getStringExtra("userType");  //get data from parent activity
-        typeTextView.setText(userType);
+        userTypeBtn= getIntent().getStringExtra("userType");  //get data from parent activity
+        typeTextView.setText(userTypeBtn);
 
-        readFirebaseData = new readFirebaseData(this,userType);
+        readFirebaseData = new readFirebaseData(this);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,8 +91,7 @@ public class SignInActivity extends AppCompatActivity {
                     //intent.putExtra("userType", userType);
                     //startActivity(intent);
                     //finish();
-                    String userId= fAuth.getCurrentUser().getUid();
-                     readFirebaseData.read(fStore,userId);
+                     readFirebaseData.read(userTypeBtn);
 
                     //reset edit text fields..
                       loginEmail.setText("");

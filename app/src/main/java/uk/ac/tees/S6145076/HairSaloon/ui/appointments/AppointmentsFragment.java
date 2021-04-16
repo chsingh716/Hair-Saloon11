@@ -88,6 +88,11 @@ public class AppointmentsFragment extends Fragment {
                 confirmCancel(getActivity(),id);
               //  Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_SHORT).show();
             }
+
+            @Override
+            public void onSuccessStore(boolean state) {
+
+            }
         });
     }
 
@@ -100,17 +105,18 @@ public class AppointmentsFragment extends Fragment {
         serviceList.clear();
         Toast.makeText(getActivity(), mySharedPref22.getName(), Toast.LENGTH_SHORT).show();
         if ( getAppointmentList() != null &&  getAppointmentList().size() > 0) {
-//            for (int i = 0; i < getAppointmentList().size(); i++) {
-//               // if (getAppointmentList().get(i).getUserName() == mySharedPref22.getName()) {
-//                    serviceList.set(i,getAppointmentList().get(i));
-//                //}
-//            }
-//        }
-//        if ( serviceList != null &&  serviceList.size() > 0) {
+            for (int i = 0; i < getAppointmentList().size(); i++) {
+                //user filter operation
+               if ((getAppointmentList().get(i).getUserName()).equals(mySharedPref22.getName())) {
+                   serviceList.add(getAppointmentList().get(i));
+                 }
+           }
+        }
+       if ( serviceList != null &&  serviceList.size() > 0) {
 
             recyclerView.setVisibility(View.VISIBLE);
             noData.setVisibility(View.GONE);
-            appointmentAdapter.RecyclerViewAdapter(getAppointmentList());
+            appointmentAdapter.RecyclerViewAdapter(serviceList);
             recyclerView.setAdapter(appointmentAdapter);
         } else {  //if list is empty
             recyclerView.setVisibility(View.GONE);

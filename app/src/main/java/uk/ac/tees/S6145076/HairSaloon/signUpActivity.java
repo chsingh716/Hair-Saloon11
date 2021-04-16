@@ -39,6 +39,8 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData;
 
 
 import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
@@ -65,12 +67,15 @@ public class signUpActivity extends AppCompatActivity implements DatePickerDialo
     private String imageFile1 = "";
     private String provider = "";
     MySharedPref22 mySharedPref22;
+    callbackUpdate callbackUpdate; //
 
     //firebase
-   public FirebaseAuth fAuth;
+   FirebaseAuth fAuth;
 
-   public FirebaseFirestore fStore; // store firebase data
+   FirebaseFirestore fStore; // store firebase data
     String userId;
+  readFirebaseData firebaseRead;
+
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +85,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
     fAuth = FirebaseAuth.getInstance();
     fStore = FirebaseFirestore.getInstance();
+
+    firebaseRead = new readFirebaseData(this);
 
     avatarImageView11 = findViewById(R.id.img_profile_avatar);
     firstNameEditText = findViewById(R.id.edit_firstname);
@@ -96,11 +103,12 @@ protected void onCreate(Bundle savedInstanceState) {
     initListeners();
     initDatePicker();
 
-
+/* when app is started and app have user login details */
     if (fAuth.getCurrentUser() != null) {
-        Toast.makeText(getApplicationContext(),fAuth.getCurrentUser().toString(),Toast.LENGTH_LONG).show();
-        startActivity(new Intent(signUpActivity.this, MainActivity.class));
-        finish();
+        //Toast.makeText(getApplicationContext(),fAuth.getCurrentUser().toString(),Toast.LENGTH_LONG).show();
+        //startActivity(new Intent(signUpActivity.this, MainActivity.class));
+       firebaseRead.read("user");
+        //finish();
     }
 
     //normal user login page
@@ -217,11 +225,24 @@ protected void onCreate(Bundle savedInstanceState) {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         //open MainActivity once user create account //
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
+                       // startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                       // finish();
 //                        Toast.makeText(getApplicationContext(), "Successfully Created User Account", Toast.LENGTH_SHORT).show();
                         // findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);  //hide progress Bar
-                        storeUserData();
+                        storeUserData(new callbackUpdate() {
+                            @Override
+                            public void deleteListener(int id) {  }
+
+                            @Override
+                            public void onSuccessStore(boolean state) {
+
+                           firebaseRead.read("user");
+
+
+                            }
+                        });
+
+
                     } else {
                         Toast.makeText(getApplicationContext(), "Error to create account", Toast.LENGTH_SHORT).show();
                         // findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);  //hide progress Bar
@@ -231,8 +252,7 @@ protected void onCreate(Bundle savedInstanceState) {
             });
 }
 
-
-private void storeUserData(){
+private void storeUserData(callbackUpdate callbackUpdate){
     userId = fAuth.getCurrentUser().getUid();
     DocumentReference db = fStore.collection("users")
             .document(userId);
@@ -241,7 +261,7 @@ private void storeUserData(){
     user.put("lastName", lastName);
     user.put("email", _email);
     user.put("DOB", _dateOfBirth);
-    user.put("userType", "Admin");
+    user.put("userType", "user");
 
     db.collection("users")
             .add(user)
@@ -249,13 +269,16 @@ private void storeUserData(){
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
                     Toast.makeText(getApplicationContext(), "Successfully data store on the firebase", Toast.LENGTH_SHORT).show();
-
+                    boolean isSuccess = true;
+                    callbackUpdate.onSuccessStore(isSuccess);
                    // Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
+                boolean isSuccess =false;
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    callbackUpdate.onSuccessStore(isSuccess);
                    // Log.w(TAG, "Error adding document", e);
                 }
             });

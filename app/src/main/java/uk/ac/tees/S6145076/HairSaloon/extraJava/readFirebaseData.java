@@ -26,20 +26,22 @@ import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
 
 public class readFirebaseData extends AppCompatActivity {
     public Context context;
-    String userTypeBtn;
     MySharedPref22 mySharedPref22;
+    FirebaseFirestore fStore;
+    FirebaseAuth fAuth;
 
-    public readFirebaseData(Context context, String userType) {
+    public readFirebaseData(Context context) {
         this.context = context;
-        userTypeBtn=userType;
         mySharedPref22= MySharedPref22.getInstance(context);
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
     }
 
-    public void read(FirebaseFirestore store, String userId) {
-
-
-        DocumentReference db = store.collection("users")
+    public void read(String userTypeBtn) {
+        //userTypeBtn // means which button is pressed
+        String userId= fAuth.getCurrentUser().getUid();
+        DocumentReference db = fStore.collection("users")
                 .document(userId);
 
         db.collection("users")
@@ -51,15 +53,21 @@ public class readFirebaseData extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String first_name = document.getString("firstName");
+                                mySharedPref22.saveName(first_name);
                                 String userType = document.getString("userType");
-                                if (userType == "Admin" && userTypeBtn == "Admin") {
+                               // Toast.makeText(context, userType, Toast.LENGTH_SHORT).show();
+                                if (userType.equalsIgnoreCase("Admin") && userTypeBtn.equalsIgnoreCase("Admin")) {
                                     context.startActivity(new Intent(context, appointments_activity.class));
 
-                                } else {
-                                    mySharedPref22.saveName(first_name);
+                                } else if(userTypeBtn.equalsIgnoreCase("Admin") && !userType.equalsIgnoreCase("Admin")){
+                                    Toast.makeText(context, "Sorry these login details are for normal user", Toast.LENGTH_SHORT).show();
+                                    fAuth.signOut();  //signout  //
+                                }
+
+                                else {
                                     context.startActivity(new Intent(context, MainActivity.class));
                                 }
-                                Toast.makeText(context, first_name, Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(context, first_name, Toast.LENGTH_SHORT).show();
 
 
                                 // Log.d(TAG, document.getId() + " => " + document.getData());
