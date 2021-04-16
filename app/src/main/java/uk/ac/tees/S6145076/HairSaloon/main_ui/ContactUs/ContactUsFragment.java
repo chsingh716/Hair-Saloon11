@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon.ui.ContactUs;
+package uk.ac.tees.S6145076.HairSaloon.main_ui.ContactUs;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

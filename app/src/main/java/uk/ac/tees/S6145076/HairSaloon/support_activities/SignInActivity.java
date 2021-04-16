@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon;
+package uk.ac.tees.S6145076.HairSaloon.support_activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.control_hub;
 
 public class SignInActivity extends AppCompatActivity {

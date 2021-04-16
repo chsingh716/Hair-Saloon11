@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon.ui.appointments;
+package uk.ac.tees.S6145076.HairSaloon.main_ui.appointments;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,10 +22,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
-import uk.ac.tees.S6145076.HairSaloon.admin.addAppointmentActivity;
-import uk.ac.tees.S6145076.HairSaloon.admin.appointmentAdapter;
+import uk.ac.tees.S6145076.HairSaloon.support_activities.addAppointmentActivity;
+import uk.ac.tees.S6145076.HairSaloon.admin_page.appointmentAdapter;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
@@ -33,7 +33,7 @@ import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
 
 public class AppointmentsFragment extends Fragment {
    MySharedPref22 mySharedPref22;
-    private uk.ac.tees.S6145076.HairSaloon.admin.appointmentAdapter appointmentAdapter;
+    private uk.ac.tees.S6145076.HairSaloon.admin_page.appointmentAdapter appointmentAdapter;
     private RecyclerView recyclerView;
 
 

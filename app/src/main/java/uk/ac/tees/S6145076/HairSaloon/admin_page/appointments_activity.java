@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon.admin;
+package uk.ac.tees.S6145076.HairSaloon.admin_page;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,8 +24,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.tees.S6145076.HairSaloon.SplashActivity;
+import uk.ac.tees.S6145076.HairSaloon.support_activities.SplashActivity;
 import uk.ac.tees.S6145076.HairSaloon.R;
+import uk.ac.tees.S6145076.HairSaloon.support_activities.addAppointmentActivity;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
 

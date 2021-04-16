@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon.admin;
+package uk.ac.tees.S6145076.HairSaloon.admin_page;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import uk.ac.tees.S6145076.HairSaloon.R;
-import uk.ac.tees.S6145076.HairSaloon.ServiceActivity;
+import uk.ac.tees.S6145076.HairSaloon.support_activities.ServiceActivity;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
 

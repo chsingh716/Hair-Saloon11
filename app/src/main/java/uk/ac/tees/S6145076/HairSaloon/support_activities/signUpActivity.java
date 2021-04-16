@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon;
+package uk.ac.tees.S6145076.HairSaloon.support_activities;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -38,11 +38,13 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
+import uk.ac.tees.S6145076.HairSaloon.R;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.control_hub;
 
 
-import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
+import static uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22.IMAGE;
 
 public class signUpActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -107,7 +109,7 @@ protected void onCreate(Bundle savedInstanceState) {
     findViewById(R.id.tv_btnLogin).setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-           Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
+           Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
            intent.putExtra("userType", "user");
             startActivity(intent);
             //Toast.makeText(getApplicationContext(),"login",Toast.LENGTH_SHORT).show();

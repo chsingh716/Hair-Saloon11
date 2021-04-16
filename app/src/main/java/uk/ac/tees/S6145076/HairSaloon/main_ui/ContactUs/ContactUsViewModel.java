@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon.ui.ContactUs;
+package uk.ac.tees.S6145076.HairSaloon.main_ui.ContactUs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

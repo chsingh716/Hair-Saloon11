@@ -24,10 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
-        <activity android:name=".signUpActivity">
+        <activity android:name=".support_activities.signUpActivity">
         </activity>
-        <activity android:name=".admin.appointments_activity" />
-        <activity android:name=".MapsActivity" />
+        <activity android:name=".admin_page.appointments_activity" />
+        <activity android:name=".support_activities.MapsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,10 +40,10 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" /> <!-- <meta-data android:name="com.google.android.geo.API_KEY" -->
         <!-- android:value="@string/google_maps_key" /> -->
-        <activity android:name=".SignInActivity" />
+        <activity android:name=".support_activities.SignInActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".admin.addAppointmentActivity" />
-        <activity android:name=".SplashActivity" >
+        <activity android:name=".support_activities.addAppointmentActivity" />
+        <activity android:name=".support_activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

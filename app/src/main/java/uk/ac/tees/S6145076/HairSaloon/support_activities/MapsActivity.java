@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon;
+package uk.ac.tees.S6145076.HairSaloon.support_activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -35,8 +35,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import static uk.ac.tees.S6145076.HairSaloon.signUpActivity.MAP_REQUEST_CODE;
-import static uk.ac.tees.S6145076.HairSaloon.signUpActivity.USER_ADDRESS;
+import uk.ac.tees.S6145076.HairSaloon.R;
+
+import static uk.ac.tees.S6145076.HairSaloon.support_activities.signUpActivity.MAP_REQUEST_CODE;
+import static uk.ac.tees.S6145076.HairSaloon.support_activities.signUpActivity.USER_ADDRESS;
 
 public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
     private FusedLocationProviderClient mFusedLocationProviderClient;

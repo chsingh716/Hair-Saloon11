@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="uk.ac.tees.S6145076.HairSaloon.SignInActivity">
+    tools:context="uk.ac.tees.S6145076.HairSaloon.support_activities.SignInActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/login_toolbar"

@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon;
+package uk.ac.tees.S6145076.HairSaloon.support_activities;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -20,8 +20,8 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import uk.ac.tees.S6145076.HairSaloon.R;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.model.ServiceTimeAdapter;
 
 

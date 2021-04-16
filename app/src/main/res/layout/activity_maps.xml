@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_black_light"
-        tools:context="uk.ac.tees.S6145076.HairSaloon.MapsActivity" />
+        tools:context="uk.ac.tees.S6145076.HairSaloon.support_activities.MapsActivity" />
 
     <EditText
         android:id="@+id/map_address_name"

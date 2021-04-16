@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="uk.ac.tees.S6145076.HairSaloon.ui.appointments.AppointmentsFragment">
+    tools:context="uk.ac.tees.S6145076.HairSaloon.main_ui.appointments.AppointmentsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointments_recycler_view"

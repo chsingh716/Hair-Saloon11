@@ -3,26 +3,20 @@ package uk.ac.tees.S6145076.HairSaloon.extraJava;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.StringTokenizer;
-
 import uk.ac.tees.S6145076.HairSaloon.MainActivity;
-import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
-import uk.ac.tees.S6145076.HairSaloon.R;
-import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
+import uk.ac.tees.S6145076.HairSaloon.admin_page.appointments_activity;
 
 public class control_hub extends AppCompatActivity {
     public Context context;

@@ -1,9 +1,7 @@
-package uk.ac.tees.S6145076.HairSaloon;
+package uk.ac.tees.S6145076.HairSaloon.extraJava;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MySharedPref22  {
 

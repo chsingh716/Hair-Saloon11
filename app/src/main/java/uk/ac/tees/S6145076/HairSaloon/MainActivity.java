@@ -31,7 +31,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.io.File;
 
 
-import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22;
+import uk.ac.tees.S6145076.HairSaloon.support_activities.signUpActivity;
+
+import static uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22.IMAGE;
 
 public class MainActivity extends AppCompatActivity {
 

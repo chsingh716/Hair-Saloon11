@@ -8,13 +8,13 @@
 
     <fragment
         android:id="@+id/nav_appointments"
-        android:name="uk.ac.tees.S6145076.HairSaloon.ui.appointments.AppointmentsFragment"
+        android:name="uk.ac.tees.S6145076.HairSaloon.main_ui.appointments.AppointmentsFragment"
         android:label="@string/menu_appointments"
         tools:layout="@layout/fragment_appointments" />
 
     <fragment
         android:id="@+id/nav_contact_us"
-        android:name="uk.ac.tees.S6145076.HairSaloon.ui.ContactUs.ContactUsFragment"
+        android:name="uk.ac.tees.S6145076.HairSaloon.main_ui.ContactUs.ContactUsFragment"
         android:label="@string/menu_contactus"
         tools:layout="@layout/fragment_contact_us" />
 </navigation>

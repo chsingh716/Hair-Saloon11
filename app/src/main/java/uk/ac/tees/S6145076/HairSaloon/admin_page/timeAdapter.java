@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon.admin;
+package uk.ac.tees.S6145076.HairSaloon.admin_page;
 
 import android.content.Context;
 import android.view.LayoutInflater;

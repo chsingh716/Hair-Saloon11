@@ -1,4 +1,4 @@
-package uk.ac.tees.S6145076.HairSaloon;
+package uk.ac.tees.S6145076.HairSaloon.support_activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.control_hub;
 
 //import static uk.ac.tees.S6145076.HairSaloon.BaseActivity.USER_TYPE;
