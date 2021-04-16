@@ -1,6 +1,5 @@
 package uk.ac.tees.S6145076.HairSaloon.admin;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,14 +27,11 @@ import java.util.List;
 import uk.ac.tees.S6145076.HairSaloon.SplashActivity;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
-import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
-import uk.mylibrary.AppDataBase;
-import uk.mylibrary.UserAppointment;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
+
 
 import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
 
-import static uk.mylibrary.UserAppointment.ACCEPTED_STATUS;
-import static uk.mylibrary.UserAppointment.REJECTED_STATUS;
 
 public class appointments_activity extends AppCompatActivity {
 
@@ -49,7 +45,7 @@ public class appointments_activity extends AppCompatActivity {
 
     //////////////////////////////////////////
     sqliteDatabaseHandler databasehandler1;
-    private List<adminAppointment> appointList = new ArrayList<>();
+    private List<adminAppointmentModel> appointList = new ArrayList<>();
 
     //onStart method is call when we move when activity to other
   protected void onStart(){
@@ -186,23 +182,7 @@ public class appointments_activity extends AppCompatActivity {
         alert.show();
     }
 
-    private void RequestStatusUpdate(UserAppointment userAppointment, boolean accepted) {
-        String status;
-        if (accepted) {
-            status = ACCEPTED_STATUS;
-        } else {
-            status = REJECTED_STATUS;
-        }
-        userAppointment.setStatus(status);
-        AppDataBase.getInstance(this).getRequestsDao().insertRequests(userAppointment);
-        String msg;
-        if (accepted) {
-            msg = "Request Confirmed";
-        } else {
-            msg = "Request Rejected";
-        }
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
+
 
 
 
@@ -240,7 +220,7 @@ public class appointments_activity extends AppCompatActivity {
 
     /* get all admin list details store in the database
      */
-    private List<adminAppointment> getAppointmentList(){
+    private List<adminAppointmentModel> getAppointmentList(){
         return databasehandler1.viewAll();
     }
 

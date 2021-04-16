@@ -23,19 +23,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.hbb20.CountryCodePicker;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
-import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
-import uk.ac.tees.S6145076.HairSaloon.extraJava.firebaseAuthentication;
-import uk.mylibrary.UserModel;
+
 
 import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
 
@@ -49,6 +53,9 @@ public class signUpActivity extends AppCompatActivity implements DatePickerDialo
     private EditText firstNameEditText,lastNameEditText, passwordEditText,emailEditText,mobileEditText;
     private TextView addressTextView,dateOfBirthTextView;
 
+    String firstName,lastName,password,_email,
+            _dateOfBirth,_address,_mobileNumber;
+
     private Button submit;
 
     private boolean isLocationEnabled = false;
@@ -58,7 +65,12 @@ public class signUpActivity extends AppCompatActivity implements DatePickerDialo
     private String imageFile1 = "";
     private String provider = "";
     MySharedPref22 mySharedPref22;
+
+    //firebase
    public FirebaseAuth fAuth;
+
+   public FirebaseFirestore fStore; // store firebase data
+    String userId;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +79,8 @@ protected void onCreate(Bundle savedInstanceState) {
     mySharedPref22 = MySharedPref22.getInstance(signUpActivity.this);
 
     fAuth = FirebaseAuth.getInstance();
+    fStore = FirebaseFirestore.getInstance();
+
     avatarImageView11 = findViewById(R.id.img_profile_avatar);
     firstNameEditText = findViewById(R.id.edit_firstname);
     lastNameEditText = findViewById(R.id.edit_lastname);
@@ -159,13 +173,13 @@ protected void onCreate(Bundle savedInstanceState) {
     }
 
     private void checkAllFields() {
-        String firstName = firstNameEditText.getText().toString().trim();
-        String lastName = firstNameEditText.getText().toString().trim();
-        String password = passwordEditText.getText().toString().trim();
-        String _email = emailEditText.getText().toString().trim();
-        String _dateOfBirth = dateOfBirthTextView.getText().toString();
-        String _address = addressTextView.getText().toString();
-        String _mobileNumber = mobileEditText.getText().toString().trim();
+         firstName = firstNameEditText.getText().toString().trim();
+         lastName = firstNameEditText.getText().toString().trim();
+         password = passwordEditText.getText().toString().trim();
+        _email = emailEditText.getText().toString().trim();
+        _dateOfBirth = dateOfBirthTextView.getText().toString();
+        _address = addressTextView.getText().toString();
+        _mobileNumber = mobileEditText.getText().toString().trim();
 
         if (imageFile1.isEmpty()) {
             showMsg(getString(R.string.enter_select_image));
@@ -205,9 +219,9 @@ protected void onCreate(Bundle savedInstanceState) {
                         //open MainActivity once user create account //
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
-                        Toast.makeText(getApplicationContext(), "Successfully Created User Account", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Successfully Created User Account", Toast.LENGTH_SHORT).show();
                         // findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);  //hide progress Bar
-
+                        storeUserData();
                     } else {
                         Toast.makeText(getApplicationContext(), "Error to create account", Toast.LENGTH_SHORT).show();
                         // findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);  //hide progress Bar
@@ -217,6 +231,36 @@ protected void onCreate(Bundle savedInstanceState) {
             });
 }
 
+
+private void storeUserData(){
+    userId = fAuth.getCurrentUser().getUid();
+    DocumentReference db = fStore.collection("users")
+            .document(userId);
+    Map<String, Object> user = new HashMap<>();
+    user.put("firstName", firstName);
+    user.put("lastName", lastName);
+    user.put("email", _email);
+    user.put("DOB", _dateOfBirth);
+    user.put("userType", "Admin");
+
+    db.collection("users")
+            .add(user)
+            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    Toast.makeText(getApplicationContext(), "Successfully data store on the firebase", Toast.LENGTH_SHORT).show();
+
+                   // Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                   // Log.w(TAG, "Error adding document", e);
+                }
+            });
+
+}
 
 
     private void showMsg(String msg) {

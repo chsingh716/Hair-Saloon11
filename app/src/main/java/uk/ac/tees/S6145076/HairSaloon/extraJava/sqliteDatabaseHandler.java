@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
 
 public class sqliteDatabaseHandler extends SQLiteOpenHelper {
 
@@ -54,13 +54,13 @@ public class sqliteDatabaseHandler extends SQLiteOpenHelper {
 
 
     //method to insert data in the database
-    public boolean insertContact(adminAppointment adminAppointment){
+    public boolean insertContact(adminAppointmentModel adminAppointmentModel){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv= new ContentValues();
-        cv.put(LOCATIONS_COLUMN_NAME, adminAppointment.getStyleName().toString());
-        cv.put(LOCATIONS_COLUMN_dataTime, adminAppointment.getTimeDate().toString());
-        cv.put(LOCATIONS_COLUMN_userName, adminAppointment.getUserName().toString());
-        cv.put(LOCATIONS_COLUMN_Status, adminAppointment.getStatus().toString());
+        cv.put(LOCATIONS_COLUMN_NAME, adminAppointmentModel.getStyleName().toString());
+        cv.put(LOCATIONS_COLUMN_dataTime, adminAppointmentModel.getTimeDate().toString());
+        cv.put(LOCATIONS_COLUMN_userName, adminAppointmentModel.getUserName().toString());
+        cv.put(LOCATIONS_COLUMN_Status, adminAppointmentModel.getStatus().toString());
         long insert= db.insert(LOCATIONS_TABLE_NAME,null,cv);
         if(insert==-1){
             return false;
@@ -72,9 +72,9 @@ public class sqliteDatabaseHandler extends SQLiteOpenHelper {
 
 
     //get or view data store in the database table
-    public List<adminAppointment> viewAll(){
+    public List<adminAppointmentModel> viewAll(){
         //define list type
-        List<adminAppointment> returnList= new ArrayList<>();
+        List<adminAppointmentModel> returnList= new ArrayList<>();
         String getQuery= "select * from " + LOCATIONS_TABLE_NAME;
         SQLiteDatabase db =this.getReadableDatabase();
         Cursor cursor= db.rawQuery(getQuery,null);
@@ -82,11 +82,11 @@ public class sqliteDatabaseHandler extends SQLiteOpenHelper {
             do{
                 int id= cursor.getInt(0);
                 String serviceName= cursor.getString(1);
-                String username= cursor.getString(2);
-                String date= cursor.getString(3);
+                String date= cursor.getString(2);
+                String username= cursor.getString(3);
                 String status= cursor.getString(4);
-                adminAppointment adminAppointment= new adminAppointment(id,serviceName,date,username,status);
-                returnList.add(adminAppointment);
+                adminAppointmentModel adminAppointmentModel = new adminAppointmentModel(id,serviceName,date,username,status);
+                returnList.add(adminAppointmentModel);
 
             }while (cursor.moveToNext());
             db.close();

@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -23,32 +22,33 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.admin.addAppointmentActivity;
 import uk.ac.tees.S6145076.HairSaloon.admin.appointmentAdapter;
-import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
-import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
-import uk.mylibrary.UserAppointment;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
+
 
 public class AppointmentsFragment extends Fragment {
-
+   MySharedPref22 mySharedPref22;
     private uk.ac.tees.S6145076.HairSaloon.admin.appointmentAdapter appointmentAdapter;
     private RecyclerView recyclerView;
+
 
     sqliteDatabaseHandler databasehandler1; //sqlite
     private FloatingActionButton addAppointments;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean isFetching = false;
     private TextView noData;
+    List<adminAppointmentModel> serviceList= new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
-
         View root = inflater.inflate(R.layout.fragment_appointments, container, false);
+         mySharedPref22 = MySharedPref22.getInstance(getActivity());
         //add new appointment //
         root.findViewById(R.id.add_item).setOnClickListener(new View.OnClickListener() {
              @Override
@@ -75,7 +75,7 @@ public class AppointmentsFragment extends Fragment {
         databasehandler1 = new sqliteDatabaseHandler(getActivity()); //sql
         //adapter
         recyclerView = view.findViewById(R.id.appointments_recycler_view);
-        appointmentAdapter = new appointmentAdapter(getActivity(),getAppointmentList());
+        appointmentAdapter = new appointmentAdapter(getActivity(),null);  //initiate with null listArray
         //recyclerView.setAdapter(appointmentAdapter);
         displayAppointments();
 
@@ -97,8 +97,17 @@ public class AppointmentsFragment extends Fragment {
     appointments
      */
     void displayAppointments(){
-        //Toast.makeText(getActivity(), appointmentArrayList.get(0).getStyleName(), Toast.LENGTH_SHORT).show();
+        serviceList.clear();
+        Toast.makeText(getActivity(), mySharedPref22.getName(), Toast.LENGTH_SHORT).show();
         if ( getAppointmentList() != null &&  getAppointmentList().size() > 0) {
+//            for (int i = 0; i < getAppointmentList().size(); i++) {
+//               // if (getAppointmentList().get(i).getUserName() == mySharedPref22.getName()) {
+//                    serviceList.set(i,getAppointmentList().get(i));
+//                //}
+//            }
+//        }
+//        if ( serviceList != null &&  serviceList.size() > 0) {
+
             recyclerView.setVisibility(View.VISIBLE);
             noData.setVisibility(View.GONE);
             appointmentAdapter.RecyclerViewAdapter(getAppointmentList());
@@ -107,16 +116,16 @@ public class AppointmentsFragment extends Fragment {
             recyclerView.setVisibility(View.GONE);
             noData.setVisibility(View.VISIBLE);
         }
-
     }
 
     /* get all admin list details store in the database
      */
-    private List<adminAppointment> getAppointmentList(){
+    private List<adminAppointmentModel> getAppointmentList(){
         return databasehandler1.viewAll();
     }
 
 
+    //delete store appointments // / // /
     void confirmCancel(Context context, int position) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Are you sure you want to cancel this appointment?")

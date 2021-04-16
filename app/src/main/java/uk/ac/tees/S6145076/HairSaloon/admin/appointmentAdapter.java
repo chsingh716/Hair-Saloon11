@@ -10,31 +10,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.ServiceActivity;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.callbackUpdate;
-import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
 
 
 public class appointmentAdapter extends RecyclerView.Adapter<appointmentsHolder> {
-    public List<adminAppointment> appointmentsList;
+    public List<adminAppointmentModel> appointmentsList;
 
     Context context;
     callbackUpdate customCallback;
+    //MySharedPref22 mySharedPref22;
 
     //constructor of class get 2 parameters from parent class
-    public appointmentAdapter(Context activity, List<adminAppointment> list) {
+    public appointmentAdapter(Context activity, List<adminAppointmentModel> list) {
         this.context = activity;
         this.appointmentsList = list; //location list Array
-
+      //  mySharedPref22 = MySharedPref22.getInstance(activity);
     }
 
 
     /*   method to update location list array
     ex: when item is insert or delete from location list
      */
-    public void RecyclerViewAdapter(List<adminAppointment> appointmentsList) {
+    public void RecyclerViewAdapter(List<adminAppointmentModel> appointmentsList) {
         this.appointmentsList = appointmentsList;
 
     }
@@ -55,13 +55,12 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentsHolder>
     @Override
     public void onBindViewHolder(@NonNull appointmentsHolder holder, int position) {
 
-        final adminAppointment appoint = this.appointmentsList.get(position);
+        final adminAppointmentModel listItem = this.appointmentsList.get(position);
         //pass data to view components as per list position
-        holder.name.setText(appoint.getStyleName());
-        holder.date_time.setText(appoint.getTimeDate());
-        holder.userName.setText(appoint.getUserName());
-        holder.styleImage.setImageResource(getStyleImage(appoint.getStyleName()));
-
+        holder.name.setText(listItem.getStyleName());
+        holder.date_time.setText(listItem.getTimeDate());
+        holder.userName.setText(listItem.getUserName());
+        holder.styleImage.setImageResource(getStyleImage(listItem.getStyleName()));
         //picasso is use to pass url link(image) to ImageView component
        // Picasso.with(this.context).load(location.getIconUrl()).resize(70, 70).into(holder.icon);
 
@@ -69,19 +68,19 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentsHolder>
         holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customCallback.deleteListener(appoint.getId());
+                customCallback.deleteListener(listItem.getId());
               //  getdeleteClickListener.onItemClick(appoint.getId());  //activate onItemClick  event
             }
         });
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return this.appointmentsList.size();
     }
-
-
 
     private int getStyleImage(String styleName) {
         int res = 0;

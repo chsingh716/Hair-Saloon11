@@ -25,19 +25,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import uk.mylibrary.AppDataBase;
-import uk.mylibrary.UserModel;
 
 import static uk.ac.tees.S6145076.HairSaloon.MySharedPref22.IMAGE;
 
@@ -46,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     MySharedPref22 mySharedPref22;
-    private UserModel userModel;
+    // UserModel userModel;
     FirebaseAuth fAuth;
 
     @Override
@@ -64,11 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         String userID = mySharedPref22.getUserId();
 
-//        AppDataBase.getInstance(this).getUserDao().getUserById(userID)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(this::onSuccess, this::onError);
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -81,13 +68,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+/* set user name and image on the side menu bar
+
+ */
         View hView = navigationView.getHeaderView(0);
         TextView tvName = hView.findViewById(R.id.nav_user_name);
-        if (userModel != null) {
-            tvName.setText(userModel.getFirstName() + " " + userModel.getLastName());
-        }
+        tvName.setText(mySharedPref22.getName());
+
         ImageView imageView = hView.findViewById(R.id.nav_user_image);
         String imagePath = mySharedPref22.getValue(IMAGE);
+
+
         if (imagePath != null && !imagePath.isEmpty()) {
             imageView.setImageURI(Uri.fromFile(new File(imagePath)));
         }
@@ -121,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void onSuccess(UserModel userModel) {
-        this.userModel = userModel;
-    }
+//    private void onSuccess(UserModel userModel) {
+//        this.userModel = userModel;
+//    }
 
 
     @Override

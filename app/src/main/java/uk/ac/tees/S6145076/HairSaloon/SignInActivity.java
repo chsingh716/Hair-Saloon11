@@ -17,16 +17,24 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.hbb20.CountryCodePicker;
+
+import uk.ac.tees.S6145076.HairSaloon.admin.appointments_activity;
+import uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData;
 
 public class SignInActivity extends AppCompatActivity {
 
     private EditText loginEmail, loginPassword;
     private Button signInButton;
     private TextView typeTextView;
-
+    private String userType;
     //firebase
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+
+    uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData readFirebaseData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +48,12 @@ public class SignInActivity extends AppCompatActivity {
 
         //initialize firebase database
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
-//        if (userType != null && userType.equalsIgnoreCase(USER)) {
-//            typeTextView.setText("USER LOGIN");
-//        } else {
-//            typeTextView.setText("ADMIN LOGIN");
-//        }
+        userType= getIntent().getStringExtra("userType");  //get data from parent activity
+        typeTextView.setText(userType);
+
+        readFirebaseData = new readFirebaseData(this,userType);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,12 +83,17 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Successfully Logout", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getApplicationContext(),"Successfully Login", Toast.LENGTH_SHORT).show();
                     //Hide ProgressBar///
 //                    findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
                     //login Successfully..
-                    startActivity(new Intent(getApplicationContext(),signUpActivity.class));
-                    finish();
+                    //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    //intent.putExtra("userType", userType);
+                    //startActivity(intent);
+                    //finish();
+                    String userId= fAuth.getCurrentUser().getUid();
+                     readFirebaseData.read(fStore,userId);
+
                     //reset edit text fields..
                       loginEmail.setText("");
                        loginPassword.setText("");

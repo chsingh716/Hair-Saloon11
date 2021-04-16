@@ -23,10 +23,7 @@ import java.util.Calendar;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import uk.ac.tees.S6145076.HairSaloon.model.ServiceTimeAdapter;
-import uk.mylibrary.AppDataBase;
-import uk.mylibrary.UserAppointment;
 
-import static uk.mylibrary.UserAppointment.PENDING_STATUS;
 
 public class ServiceActivity extends AppCompatActivity {
 
@@ -115,7 +112,6 @@ public class ServiceActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Close", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, final int id) {
-                        saveOnDB();
                         dialog.dismiss();
                     }
                 });
@@ -123,13 +119,7 @@ public class ServiceActivity extends AppCompatActivity {
         alert.show();
     }
 
-    private void saveOnDB() {
-        UserAppointment userAppointment = new UserAppointment(serviceName, currentDate.getDate().toString(), "", PENDING_STATUS, userId, userName);
-        AppDataBase.getInstance(this).getRequestsDao().insertRequests(userAppointment)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onSuccess, this::onError);
-    }
+
 
     private void onError(Throwable throwable) {
         Log.v("success", "save");

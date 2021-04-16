@@ -21,11 +21,12 @@ import java.util.Calendar;
 import uk.ac.tees.S6145076.HairSaloon.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.R;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.sqliteDatabaseHandler;
-import uk.ac.tees.S6145076.HairSaloon.model.adminAppointment;
+import uk.ac.tees.S6145076.HairSaloon.model.adminAppointmentModel;
+
 
 public class addAppointmentActivity extends AppCompatActivity {
 
-
+    MySharedPref22 mySharedPref22;
     sqliteDatabaseHandler databasehandler1;  //sqlite
     private AppCompatSpinner spinner1;
 
@@ -41,7 +42,7 @@ public class addAppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_service);
         Toolbar toolbar = findViewById(R.id.admin_add_toolbar);
         setSupportActionBar(toolbar);
-
+         mySharedPref22= MySharedPref22.getInstance(getApplicationContext());
         //sqlite initilize
         databasehandler1 = new sqliteDatabaseHandler(getApplicationContext());
 
@@ -95,11 +96,12 @@ public class addAppointmentActivity extends AppCompatActivity {
 
         String date = day + "-" + month + "-" + year;
         String time = adapter.getSelectedTime();
+        String userName= mySharedPref22.getName();
 
-        if (!styleName.isEmpty() && !time.isEmpty() && !date.isEmpty()) {
+        if (!styleName.isEmpty() && !time.isEmpty() && !date.isEmpty() && !userName.isEmpty()) {
             //insert data to database
-            String date_time= date + "," + time;
-            adminAppointment add_item=new adminAppointment(styleName,"singh12",date_time,"Accepted");
+            String date_time= date + " , " + time;
+            adminAppointmentModel add_item=new adminAppointmentModel(styleName,date_time,userName,"Accepted");
             databasehandler1.insertContact(add_item);
             Toast.makeText(addAppointmentActivity.this, "Service added successfully", Toast.LENGTH_LONG).show();
         }

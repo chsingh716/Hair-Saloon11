@@ -1,6 +1,6 @@
 package uk.ac.tees.S6145076.HairSaloon.model;
 
-public class adminAppointment {
+public class adminAppointmentModel {
     private int id;
     private String styleName;
     private String timeDate;
@@ -11,14 +11,14 @@ public class adminAppointment {
         return styleName;
     }
 
-    public adminAppointment(String styleName, String timeDate, String userName, String status) {
+    public adminAppointmentModel(String styleName, String timeDate, String userName, String status) {
         this.styleName = styleName;
         this.timeDate = timeDate;
         this.userName = userName;
         this.Status = status;
     }
 
-    public adminAppointment(int id, String styleName, String timeDate, String userName, String status) {
+    public adminAppointmentModel(int id, String styleName, String timeDate, String userName, String status) {
         this.id = id;
         this.styleName = styleName;
         this.timeDate = timeDate;
@@ -63,7 +63,7 @@ public class adminAppointment {
     }
 
 
-    public adminAppointment() {
+    public adminAppointmentModel() {
     }
 
 
