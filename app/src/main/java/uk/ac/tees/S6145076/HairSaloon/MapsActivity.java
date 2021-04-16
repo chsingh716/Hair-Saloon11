@@ -52,7 +52,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
             if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            getDeviceLocation();
+            getCurrentDeviceLocation();
             map.setMyLocationEnabled(true);
         }
     };
@@ -74,7 +74,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
 
             @Override
             public void onClick(View view) {
-                getDeviceLocation();
+                getCurrentDeviceLocation();
             }
         });
 
@@ -105,7 +105,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
-    private void getDeviceLocation() {
+    private void getCurrentDeviceLocation() {
         try {
             Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
             locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
@@ -115,18 +115,13 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
                         // Set the map's camera position to the current location of the device.
                         lastKnownLocation = task.getResult();
                         if (lastKnownLocation != null) {
-                            LatLng dummy = new LatLng(54.5742982466006, -1.2349123090100282);
+                           map.addMarker(new MarkerOptions().position(new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude())).title("My Location"));
 
-                            map.addMarker(new MarkerOptions().position(dummy).title("My Location"));
-//                            map.addMarker(new MarkerOptions().position(new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude())).title("My Location"));
 
                             CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
-                                    dummy, DEFAULT_ZOOM);
-
-//                            CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
-//                                    new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()), DEFAULT_ZOOM);
+                                    new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()), DEFAULT_ZOOM);
                             map.animateCamera(location);
-                            getLocationName();
+                            getMyLocationName();
                         }
                     }
                 }
@@ -137,15 +132,13 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         }
     }
 
-    private void getLocationName() {
+    private void getMyLocationName() {
         Geocoder geocoder;
         List<Address> addresses;
         geocoder = new Geocoder(this, Locale.getDefault());
-        LatLng dummy = new LatLng(54.5742982466006, -1.2349123090100282);
 
         try {
-            addresses = geocoder.getFromLocation(dummy.latitude, dummy.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-//            addresses = geocoder.getFromLocation(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            addresses = geocoder.getFromLocation(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
             String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
@@ -161,12 +154,12 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
 
     @Override
     public boolean onMyLocationButtonClick() {
-        getDeviceLocation();
+        getCurrentDeviceLocation();
         return false;
     }
 
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-        getDeviceLocation();
+        getCurrentDeviceLocation();
     }
 }

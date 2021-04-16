@@ -215,11 +215,6 @@ public class appointments_activity extends AppCompatActivity {
 
 
 
-
-
-
-
-
     /* get all admin list details store in the database
      */
     private List<adminAppointmentModel> getAppointmentList(){

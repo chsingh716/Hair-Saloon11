@@ -10,14 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:elevation="@dimen/_1sdp"
-        android:background="@color/Moccasin"
+        android:background="@color/Aquamarine"
         android:theme="@style/AppTheme.PopupOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.AppBarOverlay"
+            />
 
     </com.google.android.material.appbar.AppBarLayout>
 

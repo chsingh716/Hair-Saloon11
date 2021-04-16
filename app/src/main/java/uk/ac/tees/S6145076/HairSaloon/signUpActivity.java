@@ -103,13 +103,6 @@ protected void onCreate(Bundle savedInstanceState) {
     initListeners();
     initDatePicker();
 
-/* when app is started and app have user login details */
-    if (fAuth.getCurrentUser() != null) {
-        //Toast.makeText(getApplicationContext(),fAuth.getCurrentUser().toString(),Toast.LENGTH_LONG).show();
-        //startActivity(new Intent(signUpActivity.this, MainActivity.class));
-       firebaseRead.read("user");
-        //finish();
-    }
 
     //normal user login page
     findViewById(R.id.tv_btnLogin).setOnClickListener(new View.OnClickListener() {

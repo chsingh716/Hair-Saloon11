@@ -9,50 +9,43 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import uk.ac.tees.S6145076.HairSaloon.extraJava.readFirebaseData;
+
 //import static uk.ac.tees.S6145076.HairSaloon.BaseActivity.USER_TYPE;
 
 public class SplashActivity extends AppCompatActivity {
 
-    Button signInButton;
-    Button signUpButton;
-    TextView adminTextView;
+    Button getStart;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+         fAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_splash111);
-
-        signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        getStart = findViewById(R.id.btn_getStart);
+        getStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
-//                intent.putExtra(USER_TYPE, BaseActivity.USER);
-//                startActivity(intent);
-//                finish();
-            }
-        });
 
-        signUpButton = findViewById(R.id.sign_up_button);
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, signUpActivity.class);
+               Intent intent = new Intent(SplashActivity.this, signUpActivity.class);
+
                 startActivity(intent);
                 finish();
             }
         });
 
-        adminTextView = findViewById(R.id.admin_login_text_view);
-        adminTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
-//                intent.putExtra(USER_TYPE, BaseActivity.ADMIN);
-//                startActivity(intent);
-//                finish();
-            }
-        });
+
+        /* when app is started and app have user login details */
+        if (fAuth.getCurrentUser() != null) {
+            //Toast.makeText(getApplicationContext(),fAuth.getCurrentUser().toString(),Toast.LENGTH_LONG).show();
+            //startActivity(new Intent(signUpActivity.this, MainActivity.class));
+            new readFirebaseData(SplashActivity.this).read("user");
+            //finish();
+        }
+
     }
 }

@@ -5,44 +5,43 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="uk.ac.tees.S6145076.HairSaloon.SplashActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
     <ImageView
+        android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:scaleType="fitXY"
         android:layout_marginBottom="@dimen/_40sdp"
         android:layout_above="@id/sign_in_button"
         android:layout_centerInParent="true"
         android:src="@drawable/logo" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Hair Salon"
+        android:textColor="@color/gray5"
+        android:textSize="32sp"
+        android:textStyle="italic"
+        android:gravity="center_horizontal"
+       android:layout_marginVertical="10dp"
+        />
+
 
     <Button
-        android:id="@+id/sign_in_button"
-        android:layout_width="@dimen/size_150"
+        android:id="@+id/btn_getStart"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_centerInParent="true"
         android:background="@drawable/rounded_button"
-        android:text="@string/sign_in"
+        android:text="Press Here"
+        android:textColor="@color/black"
         android:textSize="@dimen/font_14" />
-
-    <Button
-        android:id="@+id/sign_up_button"
-        android:layout_width="@dimen/size_150"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sign_in_button"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/margin_30"
-        android:background="@drawable/rounded_button_gray"
-        android:text="@string/sign_up"
-        android:textSize="@dimen/font_14" />
-
-    <TextView
-        android:id="@+id/admin_login_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sign_up_button"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:text="@string/login_admin"
-        android:textColor="@color/blue" />
+</LinearLayout>
 
 </RelativeLayout>

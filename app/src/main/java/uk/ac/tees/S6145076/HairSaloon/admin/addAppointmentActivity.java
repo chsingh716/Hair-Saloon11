@@ -40,14 +40,15 @@ public class addAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_service);
+
         Toolbar toolbar = findViewById(R.id.admin_add_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
          mySharedPref22= MySharedPref22.getInstance(getApplicationContext());
         //sqlite initilize
         databasehandler1 = new sqliteDatabaseHandler(getApplicationContext());
 
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         spinner1 = findViewById(R.id.service_spinner);
 

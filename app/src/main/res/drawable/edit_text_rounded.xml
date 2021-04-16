@@ -4,7 +4,7 @@
 
     <corners android:radius="@dimen/size_10" />
     <stroke
-        android:color="@color/SandyBrown"
+        android:color="@color/Aqua"
         android:width="@dimen/size_1" />
     <solid android:color="@color/Snow" />
 

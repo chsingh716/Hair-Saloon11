@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +43,15 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in1);
+
+        Toolbar toolbar = findViewById(R.id.login_toolbar);
+        setSupportActionBar(toolbar);
+        // calling the action bar to show back button
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         loginEmail = findViewById(R.id.sign_in_et_email);
         loginPassword = findViewById(R.id.sign_in_et_password);
@@ -83,14 +95,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                  //  Toast.makeText(getApplicationContext(),"Successfully Login", Toast.LENGTH_SHORT).show();
-                    //Hide ProgressBar///
-//                    findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
-                    //login Successfully..
-                    //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    //intent.putExtra("userType", userType);
-                    //startActivity(intent);
-                    //finish();
+
                      readFirebaseData.read(userTypeBtn);
 
                     //reset edit text fields..
@@ -107,6 +112,15 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /* back button on toolbar
+
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) finish();
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -25,11 +25,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
         <activity android:name=".signUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".admin.appointments_activity" />
         <activity android:name=".MapsActivity" />
@@ -48,7 +43,13 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".admin.addAppointmentActivity" />
-        <activity android:name=".SplashActivity" />
+        <activity android:name=".SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
