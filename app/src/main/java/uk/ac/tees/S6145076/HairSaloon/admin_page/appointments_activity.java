@@ -93,7 +93,7 @@ public class appointments_activity extends AppCompatActivity {
             public void deleteListener(int id) {
                 cancelAppointment(id);
               //  confirmCancel(getApplicationContext(),id);
-                  Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_SHORT).show();
+             //     Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_SHORT).show();
             }
 
             @Override

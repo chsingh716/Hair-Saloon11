@@ -14,6 +14,11 @@
             android:id="@+id/nav_contact_us"
             android:icon="@drawable/ic_contact_us"
             android:title="@string/menu_contactus" />
+
+        <item
+            android:id="@+id/nav_weather_details"
+            android:icon="@drawable/weather_icon"
+            android:title="Weather" />
     </group>
 
     <group

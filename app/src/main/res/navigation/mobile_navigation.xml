@@ -17,4 +17,10 @@
         android:name="uk.ac.tees.S6145076.HairSaloon.main_ui.ContactUs.ContactUsFragment"
         android:label="@string/menu_contactus"
         tools:layout="@layout/fragment_contact_us" />
+
+    <fragment
+        android:id="@+id/nav_weather_details"
+        android:name="uk.ac.tees.S6145076.HairSaloon.main_ui.WeatherDetails"
+        android:label="Weather Details"
+        tools:layout="@layout/fragment_weather_details" />
 </navigation>
