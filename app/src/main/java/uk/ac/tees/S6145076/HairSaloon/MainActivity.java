@@ -2,6 +2,7 @@ package uk.ac.tees.S6145076.HairSaloon;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,9 +32,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.io.File;
 
 
+import uk.ac.tees.S6145076.HairSaloon.extraJava.BroadcastReceiverForHeadset;
 import uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22;
 import uk.ac.tees.S6145076.HairSaloon.support_activities.signUpActivity;
 
+import static android.media.AudioManager.ACTION_HEADSET_PLUG;
 import static uk.ac.tees.S6145076.HairSaloon.extraJava.MySharedPref22.IMAGE;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     MySharedPref22 mySharedPref22;
     // UserModel userModel;
     FirebaseAuth fAuth;
+
+    BroadcastReceiverForHeadset broadcastReceiverForHeadset = new BroadcastReceiverForHeadset();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,5 +177,18 @@ public class MainActivity extends AppCompatActivity {
         fAuth.signOut();
         startActivity(new Intent(MainActivity.this, signUpActivity.class));
         finish();
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter(ACTION_HEADSET_PLUG);
+        registerReceiver(broadcastReceiverForHeadset,filter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }
